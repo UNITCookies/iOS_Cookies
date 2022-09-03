@@ -96,7 +96,7 @@ extension HomeViewController {
             .debug("[HomeViewController] mapViewRegionDidChanging")
             .map { (mapView, location) in
                 return (userLat: location.latitude,
-                        userLng: location.latitude,
+                        userLng: location.longitude,
                         topRightLat: mapView.contentBounds.northEastLat,
                         topRightLng: mapView.contentBounds.northEastLng,
                         bottomLeftLat: mapView.contentBounds.southWestLat,
