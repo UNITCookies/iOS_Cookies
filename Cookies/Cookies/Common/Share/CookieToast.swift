@@ -74,7 +74,7 @@ class CookieToast : UIView {
         explainLabel.text = explain
         self.alpha = 0.0
         
-        UIView.animate(withDuration: 2.0) {
+        UIView.animate(withDuration: 0.7) {
             self.alpha = 1.0
             self.isHidden = false
         }
@@ -85,7 +85,10 @@ class CookieToast : UIView {
     }
     
     public func hide() {
-        UIView.animate(withDuration: 2.0, delay: 3, options: .curveEaseOut, animations: { [self] in
+        UIView.animate(withDuration: 0.7,
+                       delay: 0.0,
+                       options: .curveEaseOut,
+                       animations: { [self] in
              self.alpha = 0.0
             
         }, completion: {(isCompleted) in

@@ -87,7 +87,9 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="descriptionLabel" destination="Zcl-hH-vze" id="C0R-dh-Pe4"/>
                 <outlet property="messageTextField" destination="fg2-g6-nf2" id="z3G-f5-fuV"/>
+                <outlet property="nameLabel" destination="lKX-m4-HFB" id="agu-u6-5vy"/>
                 <outlet property="seeDetailCookieImageView" destination="jh5-YG-kIS" id="3Uy-eq-DGI"/>
             </connections>
             <point key="canvasLocation" x="59.420289855072468" y="375.66964285714283"/>
