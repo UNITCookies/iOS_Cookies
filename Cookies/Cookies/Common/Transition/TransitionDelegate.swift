@@ -25,7 +25,7 @@ class AnimatorForPresent: NSObject, UIViewControllerAnimatedTransitioning {
     var didPresnet: (()->())?
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.7
+        return 0.3
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -51,7 +51,7 @@ class AnimationForDismiss: NSObject, UIViewControllerAnimatedTransitioning {
     var didDismiss: (()->())?
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.7
+        return 0.3
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {

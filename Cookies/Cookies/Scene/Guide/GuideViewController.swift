@@ -31,9 +31,17 @@ extension GuideViewController {
             }).disposed(by: self.disposeBag)
         
         self.dropCookieButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                let vc = AlertViewController.createInstance(())
-                self?.present(vc, animated: true)
+            .flatMapLatest { [weak self] _ -> Observable<String> in
+                guard let self = self else { return .empty() }
+                let messageView = WriteView.loadView()
+                return AlertViewController.createInstance(messageView)
+                    .getStream(WithPresenter: self,
+                               presentationStyle: .overCurrentContext)
+                    .filter { $0 }
+                    .map { _ in messageView.message }
+            }
+            .subscribe(onNext: { [weak self] _ in
+                self?.dismiss(animated: true)
             }).disposed(by: self.disposeBag)
     }
 }

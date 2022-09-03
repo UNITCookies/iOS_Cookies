@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,35 +17,28 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H2p-7n-ulS">
                                 <rect key="frame" x="0.0" y="862" width="414" height="34"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="300" placeholderIntrinsicHeight="300" translatesAutoresizingMaskIntoConstraints="NO" id="y9C-Cj-qaI">
                                 <rect key="frame" x="0.0" y="562" width="414" height="300"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Gub-yW-iBD">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gub-yW-iBD">
                                         <rect key="frame" x="20" y="20" width="374" height="260"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="374" placeholderIntrinsicHeight="200" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xgx-7g-ic7">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="200"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IPb-Rf-rv0">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="200"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JHP-Ul-QdP">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="128"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wrq-wo-jME">
-                                                <rect key="frame" x="0.0" y="200" width="374" height="60"/>
+                                                <rect key="frame" x="0.0" y="145" width="374" height="115"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Wz-ml-d1U">
-                                                        <rect key="frame" x="0.0" y="14.5" width="187" height="31"/>
+                                                        <rect key="frame" x="0.0" y="42" width="187" height="31"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vic-WG-F4n">
-                                                        <rect key="frame" x="187" y="14.5" width="187" height="31"/>
+                                                        <rect key="frame" x="187" y="42" width="187" height="31"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                     </button>
@@ -55,7 +47,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Gub-yW-iBD" secondAttribute="bottom" constant="20" id="3Jv-jB-QuQ"/>
                                     <constraint firstAttribute="trailing" secondItem="Gub-yW-iBD" secondAttribute="trailing" constant="20" id="957-e9-Upv"/>
@@ -77,11 +69,12 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="bottomConst" destination="h4X-Za-b6Y" id="tjJ-u0-mh8"/>
+                        <outlet property="alertView" destination="y9C-Cj-qaI" id="ja6-yL-lVc"/>
+                        <outlet property="bottomConst" destination="h4X-Za-b6Y" id="WWV-8p-pYR"/>
                         <outlet property="buttonStackView" destination="wrq-wo-jME" id="r96-oX-5P9"/>
-                        <outlet property="confirmButton" destination="vic-WG-F4n" id="C4w-vx-I4a"/>
-                        <outlet property="contentView" destination="xgx-7g-ic7" id="MLf-K4-hQs"/>
-                        <outlet property="deniedButton" destination="3Wz-ml-d1U" id="eYj-7b-4ji"/>
+                        <outlet property="containerView" destination="JHP-Ul-QdP" id="Xw9-NX-kfZ"/>
+                        <outlet property="leftButton" destination="3Wz-ml-d1U" id="eYj-7b-4ji"/>
+                        <outlet property="rightButton" destination="vic-WG-F4n" id="C4w-vx-I4a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -89,9 +82,4 @@
             <point key="canvasLocation" x="100.00000000000001" y="128.57142857142856"/>
         </scene>
     </scenes>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>
