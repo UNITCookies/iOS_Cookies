@@ -34,7 +34,9 @@ extension GuideViewController {
             .flatMapLatest { [weak self] _ -> Observable<String> in
                 guard let self = self else { return .empty() }
                 let messageView = WriteView.loadView()
-                return AlertViewController.createInstance(messageView)
+                return AlertViewController.createInstance((contentView: messageView,
+                                                           leftButtonTitle: nil,
+                                                           rightButtonTitle: "쿠키 작성 완료"))
                     .getStream(WithPresenter: self,
                                presentationStyle: .overCurrentContext)
                     .filter { $0 }

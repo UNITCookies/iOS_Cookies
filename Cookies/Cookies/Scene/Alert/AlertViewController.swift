@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SnapKit
 
 final class AlertViewController: UIViewController {
     private let transitioning = TransitioningDelegate()
@@ -18,10 +19,26 @@ final class AlertViewController: UIViewController {
     @IBOutlet private weak var bottomConst: NSLayoutConstraint!
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var buttonStackView: UIStackView!
-    @IBOutlet private weak var rightButton: UIButton!
-    @IBOutlet private weak var leftButton: UIButton!
+    
+    private let leftButton: UIButton = {
+        let btn = UIButton()
+        btn.backgroundColor = .orange
+        btn.setTitleColor(.white, for: .normal)
+        return btn
+    }()
+    
+    private let rightButton: UIButton = {
+        let btn = UIButton()
+        btn.setTitleColor(.white, for: .normal)
+        btn.backgroundColor = .orange
+        btn.layer.addBorder([.top, .bottom], color: UIColor.black, width: 1)
+        return btn
+    }()
     
     private var contentView: UIView?
+    private var leftTitle: String?
+    private var rightTItle: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupUI()
@@ -53,6 +70,20 @@ final class AlertViewController: UIViewController {
 
 extension AlertViewController {
     private func setupUI() {
+        if let rightTitle = self.rightTItle {
+            self.rightButton.setTitle(rightTitle, for: .normal)
+            self.buttonStackView.addArrangedSubview(self.rightButton)
+            self.rightButton.snp.makeConstraints { $0.height.equalTo(70) }
+            self.rightButton.layer.addBorder([.top, .bottom], color: UIColor.black, width: 1)
+        }
+        
+        if let leftTitle = self.leftTitle {
+            self.leftButton.setTitle(leftTitle, for: .normal)
+            self.buttonStackView.addArrangedSubview(self.leftButton)
+            self.leftButton.snp.makeConstraints { $0.height.equalTo(70) }
+            self.leftButton.layer.addBorder([.top, .bottom], color: UIColor.black, width: 1)
+        }
+        
         self.alertView.layer.cornerRadius = 10.0
         self.alertView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         self.containerView.addSubview(self.contentView!)
@@ -110,7 +141,10 @@ extension AlertViewController {
 extension AlertViewController: VCFactorable {
     public static var storyboardIdentifier = "Alert"
     public static var vcIdentifier = "AlertViewController"
-    public func bindData(value: UIView) {
+    public func bindData(value: (contentView: UIView,
+                                 leftButtonTitle: String?,
+                                 rightButtonTitle: String?)) {
+        
         self.transitioning.present.willPresent = { [weak self] in
             guard let self = self else { return }
             self.view.alpha = 0.0
@@ -136,7 +170,10 @@ extension AlertViewController: VCFactorable {
         
         self.transitioningDelegate  = self.transitioning
         self.modalPresentationStyle = .overCurrentContext
-        self.contentView = value
+        
+        self.contentView = value.contentView
+        self.leftTitle   = value.leftButtonTitle
+        self.rightTItle  = value.rightButtonTitle
     }
 }
 

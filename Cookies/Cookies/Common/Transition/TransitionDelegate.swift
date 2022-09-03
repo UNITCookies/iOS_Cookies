@@ -25,18 +25,25 @@ class AnimatorForPresent: NSObject, UIViewControllerAnimatedTransitioning {
     var didPresnet: (()->())?
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.3
+        return 0.5
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let presentedViewController = transitionContext.viewController(forKey: .to) else { return }
         guard let presentedView = presentedViewController.view else { return }
+        let animationSettings = TransitionSetting().animation.present
+        
         presentedViewController.beginAppearanceTransition(true, animated: true)
         transitionContext.containerView.addSubview(presentedView)
         presentedView.layoutIfNeeded()
         self.willPresent?()
         
-        UIView.animate(withDuration: transitionDuration(using: transitionContext), animations: {
+        UIView.animate(withDuration: transitionDuration(using: transitionContext),
+                       delay: animationSettings.delay,
+                       usingSpringWithDamping: animationSettings.damping,
+                       initialSpringVelocity: animationSettings.springVelocity,
+                       options: animationSettings.options.union(.allowUserInteraction),
+                       animations: {
             self.didPresnet?()
             presentedView.layoutIfNeeded()
         }, completion: { finished in
@@ -57,6 +64,8 @@ class AnimationForDismiss: NSObject, UIViewControllerAnimatedTransitioning {
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let dismissingViewController = transitionContext.viewController(forKey: .from) else { return }
         guard let dismissingView = dismissingViewController.view else { return }
+        
+        let animationSettings = TransitionSetting().animation.dismiss
         dismissingViewController.beginAppearanceTransition(true, animated: true)
         self.willDismiss?()
         
