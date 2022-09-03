@@ -23,6 +23,14 @@
 		6F2E374428C35EE800823563 /* WriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2E374328C35EE800823563 /* WriteView.swift */; };
 		6F2E374628C35EEE00823563 /* WriteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F2E374528C35EEE00823563 /* WriteView.xib */; };
 		6F2E374828C3616500823563 /* UIMonad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2E374728C3616500823563 /* UIMonad.swift */; };
+		6F2FE35528C38B0E0080EFDE /* RxNMFMapViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2FE35428C38B0E0080EFDE /* RxNMFMapViewDelegateProxy.swift */; };
+		6F2FE35728C38BA60080EFDE /* Rx+NMFMapview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2FE35628C38BA60080EFDE /* Rx+NMFMapview.swift */; };
+		6F2FE35928C395540080EFDE /* RxCLLocationDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2FE35828C395540080EFDE /* RxCLLocationDelegateProxy.swift */; };
+		6F2FE35D28C39A8E0080EFDE /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2FE35C28C39A8E0080EFDE /* HomeViewModel.swift */; };
+		6F2FE36028C39B0B0080EFDE /* APIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2FE35F28C39B0B0080EFDE /* APIServiceProtocol.swift */; };
+		6F2FE36428C39B5E0080EFDE /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2FE36328C39B5E0080EFDE /* Model.swift */; };
+		6F2FE36628C39B7D0080EFDE /* Model.Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2FE36528C39B7D0080EFDE /* Model.Letter.swift */; };
+		6F2FE36828C3A3A10080EFDE /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2FE36728C3A3A10080EFDE /* APIService.swift */; };
 		6F6A1BD628C338F900731B75 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6A1BD528C338F900731B75 /* AlertViewController.swift */; };
 		6F6A1BD828C3391200731B75 /* Alert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F6A1BD728C3391200731B75 /* Alert.storyboard */; };
 		6F72CD1028C2F1B90038BC32 /* Viewmodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F72CD0F28C2F1B90038BC32 /* Viewmodel.swift */; };
@@ -95,6 +103,14 @@
 		6F2E374328C35EE800823563 /* WriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteView.swift; sourceTree = "<group>"; };
 		6F2E374528C35EEE00823563 /* WriteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WriteView.xib; sourceTree = "<group>"; };
 		6F2E374728C3616500823563 /* UIMonad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMonad.swift; sourceTree = "<group>"; };
+		6F2FE35428C38B0E0080EFDE /* RxNMFMapViewDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxNMFMapViewDelegateProxy.swift; sourceTree = "<group>"; };
+		6F2FE35628C38BA60080EFDE /* Rx+NMFMapview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+NMFMapview.swift"; sourceTree = "<group>"; };
+		6F2FE35828C395540080EFDE /* RxCLLocationDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxCLLocationDelegateProxy.swift; sourceTree = "<group>"; };
+		6F2FE35C28C39A8E0080EFDE /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		6F2FE35F28C39B0B0080EFDE /* APIServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceProtocol.swift; sourceTree = "<group>"; };
+		6F2FE36328C39B5E0080EFDE /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		6F2FE36528C39B7D0080EFDE /* Model.Letter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.Letter.swift; sourceTree = "<group>"; };
+		6F2FE36728C3A3A10080EFDE /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		6F6A1BD528C338F900731B75 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		6F6A1BD728C3391200731B75 /* Alert.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Alert.storyboard; sourceTree = "<group>"; };
 		6F72CD0F28C2F1B90038BC32 /* Viewmodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Viewmodel.swift; sourceTree = "<group>"; };
@@ -233,6 +249,34 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		6F2FE35328C38AFF0080EFDE /* DelegateProxy */ = {
+			isa = PBXGroup;
+			children = (
+				6F2FE35428C38B0E0080EFDE /* RxNMFMapViewDelegateProxy.swift */,
+				6F2FE35628C38BA60080EFDE /* Rx+NMFMapview.swift */,
+				6F2FE35828C395540080EFDE /* RxCLLocationDelegateProxy.swift */,
+			);
+			path = DelegateProxy;
+			sourceTree = "<group>";
+		};
+		6F2FE35E28C39AFA0080EFDE /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				6F2FE35F28C39B0B0080EFDE /* APIServiceProtocol.swift */,
+				6F2FE36728C3A3A10080EFDE /* APIService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		6F2FE36228C39B530080EFDE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6F2FE36328C39B5E0080EFDE /* Model.swift */,
+				6F2FE36528C39B7D0080EFDE /* Model.Letter.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		6F6A1BD428C338E500731B75 /* Write */ = {
 			isa = PBXGroup;
 			children = (
@@ -256,6 +300,7 @@
 				6F72CD2228C2FCC40038BC32 /* CookieDomain.swift */,
 				6F72CD1228C2F5AE0038BC32 /* API.swift */,
 				6F72CD2428C2FDF10038BC32 /* MockError.swift */,
+				6F2FE35E28C39AFA0080EFDE /* Service */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -264,6 +309,7 @@
 			isa = PBXGroup;
 			children = (
 				3C453D8628C3929F00D4ADF3 /* Font */,
+				6F2FE35328C38AFF0080EFDE /* DelegateProxy */,
 				3C453D7E28C3576B00D4ADF3 /* Share */,
 				6FC8D3B228C31739000A9125 /* Protocol */,
 				6FC8D3AF28C313C5000A9125 /* Utility */,
@@ -312,6 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				6F72CD1428C2F5CE0038BC32 /* Common */,
+				6F2FE36228C39B530080EFDE /* Model */,
 				6F72CD1128C2F5A60038BC32 /* API */,
 				6FC8D3AA28C31277000A9125 /* Scene */,
 				6FB2B77A28C2E8B10015331B /* AppDelegate.swift */,
@@ -390,6 +437,7 @@
 			isa = PBXGroup;
 			children = (
 				6FC8D3B628C31C2E000A9125 /* HomeViewController.swift */,
+				6F2FE35C28C39A8E0080EFDE /* HomeViewModel.swift */,
 				6FC8D3B828C31FFD000A9125 /* HomeViewController+Gesture.swift */,
 				6FC8D3BC28C3278B000A9125 /* View */,
 			);
@@ -669,12 +717,15 @@
 				6FB2B77F28C2E8B10015331B /* ViewController.swift in Sources */,
 				3C453D8528C3815300D4ADF3 /* CheckCookieView.swift in Sources */,
 				6FC8D3B728C31C2E000A9125 /* HomeViewController.swift in Sources */,
+				6F2FE36628C39B7D0080EFDE /* Model.Letter.swift in Sources */,
 				6F72CD2128C2FBDF0038BC32 /* APIError.Code.swift in Sources */,
 				3C453D8028C3576B00D4ADF3 /* CookieToast.swift in Sources */,
 				6F2E374828C3616500823563 /* UIMonad.swift in Sources */,
 				6FC8D3BE28C327A0000A9125 /* CookieView.swift in Sources */,
 				6FB2B77B28C2E8B10015331B /* AppDelegate.swift in Sources */,
+				6F2FE35928C395540080EFDE /* RxCLLocationDelegateProxy.swift in Sources */,
 				6F72CD1628C2F5D70038BC32 /* APIConfig.swift in Sources */,
+				6F2FE36428C39B5E0080EFDE /* Model.swift in Sources */,
 				6F72CD1E28C2FB550038BC32 /* APIError.swift in Sources */,
 				6F72CD1028C2F1B90038BC32 /* Viewmodel.swift in Sources */,
 				6FB2B77D28C2E8B10015331B /* SceneDelegate.swift in Sources */,
@@ -684,18 +735,23 @@
 				6F72CD2328C2FCC40038BC32 /* CookieDomain.swift in Sources */,
 				6FC8D3C228C3288F000A9125 /* UIView+Layout.swift in Sources */,
 				6FC8D3C428C328C6000A9125 /* NSObject+.swift in Sources */,
+				6F2FE36828C3A3A10080EFDE /* APIService.swift in Sources */,
 				6F2E373F28C34D3400823563 /* BottomMenuView.swift in Sources */,
 				6FC8D3B928C31FFD000A9125 /* HomeViewController+Gesture.swift in Sources */,
 				3C453D9428C392D300D4ADF3 /* UIFont+.swift in Sources */,
 				6F72CD1A28C2FADE0038BC32 /* APIConfig+Error.swift in Sources */,
+				6F2FE35D28C39A8E0080EFDE /* HomeViewModel.swift in Sources */,
 				6FC8D3CC28C3320F000A9125 /* TransitionDelegate.swift in Sources */,
 				6F72CD1C28C2FAFB0038BC32 /* API.Parameter.swift in Sources */,
 				6FC8D3AE28C313C0000A9125 /* VCFactory.swift in Sources */,
 				6F72CD1328C2F5AE0038BC32 /* API.swift in Sources */,
 				6FC8D3B128C31544000A9125 /* CookiesScene.swift in Sources */,
+				6F2FE35528C38B0E0080EFDE /* RxNMFMapViewDelegateProxy.swift in Sources */,
 				6F72CD1828C2FA520038BC32 /* APIConfig+Request.swift in Sources */,
+				6F2FE35728C38BA60080EFDE /* Rx+NMFMapview.swift in Sources */,
 				6FC8D3A928C3123F000A9125 /* CookiesTransition.swift in Sources */,
 				6FC8D3B428C31752000A9125 /* CookieEmbeddable.swift in Sources */,
+				6F2FE36028C39B0B0080EFDE /* APIServiceProtocol.swift in Sources */,
 				6F72CD2528C2FDF10038BC32 /* MockError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -872,7 +928,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 594TR8CRP9;
 				EXCLUDED_ARCHS = "";
@@ -890,6 +947,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = UNITCookies.Cookies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = cookies_dev;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -902,7 +960,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 594TR8CRP9;
 				EXCLUDED_ARCHS = "";
@@ -920,6 +979,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = UNITCookies.Cookies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = cookies_dev;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

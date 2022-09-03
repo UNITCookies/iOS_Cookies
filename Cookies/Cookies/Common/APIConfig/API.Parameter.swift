@@ -25,8 +25,17 @@ extension API.Parameter {
     }
 }
 
+extension Decodable {
+    static func decode<T: Decodable>(dictionary: [String: Any]) throws -> T {
+        let data = try JSONSerialization.data(withJSONObject: dictionary,
+                                              options: [.fragmentsAllowed])
+        
+        return try JSONDecoder().decode(T.self, from: data)
+    }
+}
+
 extension Encodable {
-    fileprivate func toDictionary(keyStrategy strategy: JSONEncoder.KeyEncodingStrategy = .useDefaultKeys, options: JSONSerialization.ReadingOptions = [.allowFragments]) -> [String : Any]? {
+    func toDictionary(keyStrategy strategy: JSONEncoder.KeyEncodingStrategy = .useDefaultKeys, options: JSONSerialization.ReadingOptions = [.allowFragments]) -> [String : Any]? {
         let encoder = JSONEncoder()
         encoder.keyEncodingStrategy = strategy
         
@@ -36,6 +45,14 @@ extension Encodable {
 }
 
 extension Data {
+    func toDict() throws -> [String: Any]? {
+        guard let dict = try JSONSerialization.jsonObject(with: self, options: .allowFragments) as? [String: Any] else {
+            throw NSError()
+        }
+        
+        return dict
+    }
+    
     func parse<Element: Decodable>(keyStrategy strategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) throws -> Element {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = strategy
