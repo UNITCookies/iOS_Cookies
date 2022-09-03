@@ -20,12 +20,14 @@ final class HomeViewController: UIViewController {
     
     private let userLocation    = BehaviorSubject<CLLocationCoordinate2D>(value: CLLocationCoordinate2D())
     private let guideDismiss    = PublishSubject<String>()
+    private let tappedMarker    = BehaviorRelay<NMFOverlay?>(value: nil)
+    
     private let disposeBag      = DisposeBag()
     private let viewModel       = HomeViewModel(service: APIService())
     private let locationManager = CLLocationManager()
     private let menuView        = BottomMenuView.loadView()
     private let toast           = CookieToast()
-    
+    private var marker          = Set<NMFMarker>()
     private lazy var naverMap: NMFMapView = NMFMapView(frame: self.view.frame)
     
     override func viewDidLoad() {
@@ -34,34 +36,6 @@ final class HomeViewController: UIViewController {
         self.setViews()
         self.presentGuideView()
         self.setBind()
-        
-        /*
-         "curMemberX": 37.4952339,
-         "curMemberY": 127.0382079,
-         "startX": 37.4882018,
-         "startY": 127.0314238,
-         "endX": 37.5035999,
-         "endY": 127.0486473
-         */
-//        let param = ["curMemberX": 37.4952339,
-//                     "curMemberY": 127.0382079,
-//                     "startX"    : 37.4882018,
-//                     "startY"    : 127.0314238,
-//                     "endX"      : 37.5035999,
-//                     "endY"      : 127.0486473]
-//
-//        AF.request(URL(string: "http://43.200.232.27:8080/letter/map")!,
-//                   method: .post,
-//                   parameters: param).response { data in
-//            print("\(data)")
-//        }
-
-//        Observable.just(())
-//            .flatMap { _ -> Observable<Model.Letter> in
-//                return API.ReadLetter(id: "1").request()
-//            }.subscribe(onNext: { _ in
-//            
-//            }).disposed(by: self.disposeBag)
     }
 }
 
@@ -120,6 +94,12 @@ extension HomeViewController {
             .debounce(.seconds(1), scheduler: MainScheduler.instance)
             .debug("[HomeViewController] mapViewRegionDidChanging")
             .map { (mapView, location) in
+//                return (userLat: location.latitude,
+//                        userLng: location.latitude,
+//                        topRightLat: mapView.contentBounds.northEastLat,
+//                        topRightLng: mapView.contentBounds.northEastLng,
+//                        bottomLeftLat: mapView.contentBounds.southWestLat,
+//                        bottomLeftLng: mapView.contentBounds.southWestLng)
                 return (userLat: 37.4952339,
                         userLng: 127.0382079,
                         topRightLat: 37.4882018,
@@ -132,8 +112,11 @@ extension HomeViewController {
         
         self.naverMap.rx.didTapMapView
             .debug("[HomeViewController] didTapMapView")
-            .subscribe(onNext: {
-            
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.marker.filter { $0.userInfo["isAble"] as! Bool }.forEach { marker in
+                    marker.iconImage = NMFOverlayImage(image: UIImage(named: "unSelectPin")!)
+                }
         }).disposed(by: self.disposeBag)
         
         self.guideDismiss
@@ -147,6 +130,18 @@ extension HomeViewController {
             .debug("[HomeViewController] updateLocations")
             .bind(to: self.userLocation)
             .disposed(by: self.disposeBag)
+        
+        self.tappedMarker
+            .subscribe(onNext: { [weak self] overlay in
+                guard let self = self else { return }
+                self.marker.filter { $0.userInfo["isAble"] as! Bool }.forEach { marker in
+                    marker.iconImage = NMFOverlayImage(image: UIImage(named: "unSelectPin")!)
+                }
+                
+                if let marker = overlay as? NMFMarker {
+                    marker.iconImage = NMFOverlayImage(image: UIImage(named: "selectPin")!)
+                }
+            }).disposed(by: self.disposeBag)
         
         let tappedWrite = self.menuView.rx.tappedWrite
             .flatMapLatest { [weak self] _ -> Observable<String> in
@@ -176,8 +171,34 @@ extension HomeViewController {
         
         output.pins
             .debug("pins")
-            .subscribe(onNext: { pins in
+            .subscribe(onNext: { [weak self] pins in
+                guard let self = self else { return }
+                self.marker.forEach { marker in
+                    marker.mapView = nil
+                }
                 
+                pins.disablePin.forEach { cookie in
+                    let marker = NMFMarker()
+                    marker.position = NMGLatLng(lat: cookie.lat, lng: cookie.lng)
+                    marker.mapView = self.naverMap
+                    marker.iconImage = NMFOverlayImage(image: UIImage(named: "disablePin")!)
+                    marker.userInfo = ["isAble": false]
+                    self.marker.insert(marker)
+                }
+                
+                pins.enablePin.forEach { cookie in
+                    let marker = NMFMarker()
+                    marker.position = NMGLatLng(lat: cookie.lat, lng: cookie.lng)
+                    marker.mapView = self.naverMap
+                    marker.iconImage = NMFOverlayImage(image: UIImage(named: "unSelectPin")!)
+                    marker.userInfo = ["isAble": true]
+                    marker.touchHandler = { [weak self] overlay in
+                        self?.tappedMarker.accept(overlay)
+                        return true
+                    }
+                    
+                    self.marker.insert(marker)
+                }
             }).disposed(by: self.disposeBag)
         
         output.detailLetter

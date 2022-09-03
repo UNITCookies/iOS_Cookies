@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,6 +19,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H2p-7n-ulS">
                                 <rect key="frame" x="0.0" y="862" width="414" height="34"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mtm-xC-jTE">
+                                <rect key="frame" x="0.0" y="547" width="414" height="20"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="C8u-h6-iyM"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="300" placeholderIntrinsicHeight="300" translatesAutoresizingMaskIntoConstraints="NO" id="y9C-Cj-qaI">
                                 <rect key="frame" x="0.0" y="562" width="414" height="300"/>
@@ -61,12 +69,15 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="H2p-7n-ulS" secondAttribute="bottom" id="4cr-Ea-FOK"/>
+                            <constraint firstItem="y9C-Cj-qaI" firstAttribute="top" secondItem="Mtm-xC-jTE" secondAttribute="bottom" constant="-5" id="Bhd-ga-LXd"/>
                             <constraint firstItem="y9C-Cj-qaI" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Ekz-ni-tVs"/>
                             <constraint firstItem="H2p-7n-ulS" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="HF6-VD-HKD"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="H2p-7n-ulS" secondAttribute="trailing" id="NFF-Fg-sPl"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="y9C-Cj-qaI" secondAttribute="trailing" id="dLG-ZR-n8B"/>
+                            <constraint firstItem="Mtm-xC-jTE" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="dzf-Iq-V1m"/>
                             <constraint firstItem="H2p-7n-ulS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ehW-sq-ock"/>
                             <constraint firstItem="H2p-7n-ulS" firstAttribute="top" secondItem="y9C-Cj-qaI" secondAttribute="bottom" id="h4X-Za-b6Y"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Mtm-xC-jTE" secondAttribute="trailing" id="l9C-yb-BbU"/>
                         </constraints>
                     </view>
                     <connections>
@@ -83,5 +94,8 @@
     </scenes>
     <resources>
         <image name="xmark" catalog="system" width="128" height="113"/>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

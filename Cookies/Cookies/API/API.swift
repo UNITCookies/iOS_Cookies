@@ -54,7 +54,7 @@ extension API.CookiesPin: APIConfigWithError {
     static let serviceError = MockError.self
     
     var path: String { return "/letter/map" }
-    var method: HTTPMethod { return .get }
+    var method: HTTPMethod { return .post }
     var parameters: API.Parameter? {
         let params: [String: Any] = ["curMemberX": self.userLat,
                                      "curMemberY": self.userLng,
@@ -92,11 +92,3 @@ extension API.WriteLetter: APIConfigWithError {
         return result
     }
 }
-
-/*
- {
-     "letterContent" : "안녕하세요!! 안녕하세요!! 안녕하세요!! 안녕하세요!! 안녕하세요!! 안녕하세요!! 안녕하세요!! 안녕하세요!! 안녕하세요!! 안녕하세요!!",
-     "x" : 37.4952339,
-     "y" : 127.0382079
- }
- */

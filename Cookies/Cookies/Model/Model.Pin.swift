@@ -21,7 +21,7 @@ extension Model {
 
 extension Model.Pin {
     struct Cookie: Codable {
-        let id : String
+        let id : Int
         let lat: Double
         let lng: Double
         let enableCount: Int
