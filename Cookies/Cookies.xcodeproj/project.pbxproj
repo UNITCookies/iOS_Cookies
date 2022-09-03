@@ -10,6 +10,11 @@
 		042FE5FEF5ABEE9292B5B851 /* Pods_Cookies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF61FF7469240FF30188976 /* Pods_Cookies.framework */; };
 		331EA25EEA6F57F555B2DB13 /* Pods_Cookies_CookiesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 825EB6E71034BB775AC625B8 /* Pods_Cookies_CookiesUITests.framework */; };
 		3C453D8028C3576B00D4ADF3 /* CookieToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C453D7F28C3576B00D4ADF3 /* CookieToast.swift */; };
+		6F2E373F28C34D3400823563 /* BottomMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2E373E28C34D3400823563 /* BottomMenuView.swift */; };
+		6F2E374128C34D3D00823563 /* BottomMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F2E374028C34D3D00823563 /* BottomMenuView.xib */; };
+		6F2E374428C35EE800823563 /* WriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2E374328C35EE800823563 /* WriteView.swift */; };
+		6F2E374628C35EEE00823563 /* WriteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F2E374528C35EEE00823563 /* WriteView.xib */; };
+		6F2E374828C3616500823563 /* UIMonad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2E374728C3616500823563 /* UIMonad.swift */; };
 		6F6A1BD628C338F900731B75 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6A1BD528C338F900731B75 /* AlertViewController.swift */; };
 		6F6A1BD828C3391200731B75 /* Alert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F6A1BD728C3391200731B75 /* Alert.storyboard */; };
 		6F72CD1028C2F1B90038BC32 /* Viewmodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F72CD0F28C2F1B90038BC32 /* Viewmodel.swift */; };
@@ -69,6 +74,11 @@
 		3C453D7F28C3576B00D4ADF3 /* CookieToast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CookieToast.swift; sourceTree = "<group>"; };
 		460B4154820812C3D67A7961 /* Pods-Cookies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cookies.release.xcconfig"; path = "Target Support Files/Pods-Cookies/Pods-Cookies.release.xcconfig"; sourceTree = "<group>"; };
 		6460C65FCE166EC0D0255295 /* Pods-CookiesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CookiesTests.release.xcconfig"; path = "Target Support Files/Pods-CookiesTests/Pods-CookiesTests.release.xcconfig"; sourceTree = "<group>"; };
+		6F2E373E28C34D3400823563 /* BottomMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuView.swift; sourceTree = "<group>"; };
+		6F2E374028C34D3D00823563 /* BottomMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomMenuView.xib; sourceTree = "<group>"; };
+		6F2E374328C35EE800823563 /* WriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteView.swift; sourceTree = "<group>"; };
+		6F2E374528C35EEE00823563 /* WriteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WriteView.xib; sourceTree = "<group>"; };
+		6F2E374728C3616500823563 /* UIMonad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMonad.swift; sourceTree = "<group>"; };
 		6F6A1BD528C338F900731B75 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		6F6A1BD728C3391200731B75 /* Alert.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Alert.storyboard; sourceTree = "<group>"; };
 		6F72CD0F28C2F1B90038BC32 /* Viewmodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Viewmodel.swift; sourceTree = "<group>"; };
@@ -176,9 +186,19 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		6F2E374228C35EE000823563 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6F2E374328C35EE800823563 /* WriteView.swift */,
+				6F2E374528C35EEE00823563 /* WriteView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		6F6A1BD428C338E500731B75 /* Write */ = {
 			isa = PBXGroup;
 			children = (
+				6F2E374228C35EE000823563 /* View */,
 			);
 			path = Write;
 			sourceTree = "<group>";
@@ -313,6 +333,7 @@
 				6FC8D3BA28C320C9000A9125 /* UIView+.swift */,
 				6FC8D3C128C3288F000A9125 /* UIView+Layout.swift */,
 				6FC8D3C328C328C6000A9125 /* NSObject+.swift */,
+				6F2E374728C3616500823563 /* UIMonad.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -340,6 +361,8 @@
 			children = (
 				6FC8D3BD28C327A0000A9125 /* CookieView.swift */,
 				6FC8D3BF28C327A9000A9125 /* CookieView.xib */,
+				6F2E373E28C34D3400823563 /* BottomMenuView.swift */,
+				6F2E374028C34D3D00823563 /* BottomMenuView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -464,7 +487,9 @@
 				6FC8D3C028C327A9000A9125 /* CookieView.xib in Resources */,
 				6F6A1BD828C3391200731B75 /* Alert.storyboard in Resources */,
 				6FB2B78728C2E8B30015331B /* LaunchScreen.storyboard in Resources */,
+				6F2E374628C35EEE00823563 /* WriteView.xib in Resources */,
 				6FB2B78428C2E8B30015331B /* Assets.xcassets in Resources */,
+				6F2E374128C34D3D00823563 /* BottomMenuView.xib in Resources */,
 				6FB2B78228C2E8B10015331B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -599,17 +624,20 @@
 				6FC8D3B728C31C2E000A9125 /* HomeViewController.swift in Sources */,
 				6F72CD2128C2FBDF0038BC32 /* APIError.Code.swift in Sources */,
 				3C453D8028C3576B00D4ADF3 /* CookieToast.swift in Sources */,
+				6F2E374828C3616500823563 /* UIMonad.swift in Sources */,
 				6FC8D3BE28C327A0000A9125 /* CookieView.swift in Sources */,
 				6FB2B77B28C2E8B10015331B /* AppDelegate.swift in Sources */,
 				6F72CD1628C2F5D70038BC32 /* APIConfig.swift in Sources */,
 				6F72CD1E28C2FB550038BC32 /* APIError.swift in Sources */,
 				6F72CD1028C2F1B90038BC32 /* Viewmodel.swift in Sources */,
 				6FB2B77D28C2E8B10015331B /* SceneDelegate.swift in Sources */,
+				6F2E374428C35EE800823563 /* WriteView.swift in Sources */,
 				6FC8D3CE28C3325D000A9125 /* GuideViewController.swift in Sources */,
 				6FC8D3BB28C320C9000A9125 /* UIView+.swift in Sources */,
 				6F72CD2328C2FCC40038BC32 /* CookieDomain.swift in Sources */,
 				6FC8D3C228C3288F000A9125 /* UIView+Layout.swift in Sources */,
 				6FC8D3C428C328C6000A9125 /* NSObject+.swift in Sources */,
+				6F2E373F28C34D3400823563 /* BottomMenuView.swift in Sources */,
 				6FC8D3B928C31FFD000A9125 /* HomeViewController+Gesture.swift in Sources */,
 				6F72CD1A28C2FADE0038BC32 /* APIConfig+Error.swift in Sources */,
 				6FC8D3CC28C3320F000A9125 /* TransitionDelegate.swift in Sources */,
@@ -799,6 +827,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 594TR8CRP9;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Cookies/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -828,6 +857,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 594TR8CRP9;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Cookies/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

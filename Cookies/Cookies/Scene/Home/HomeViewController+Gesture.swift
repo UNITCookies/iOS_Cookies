@@ -20,7 +20,7 @@ extension HomeViewController {
         if gesture.state == .changed {
             if point.y >= 0 && point.y <= height{
                 let differ = (height - contentViewHeight) - point.y
-                self.infoViewBottomConst.constant = differ + contentViewHeight
+//                self.infoViewBottomConst.constant = differ + contentViewHeight
             }
         } else if gesture.state == .ended {
             
