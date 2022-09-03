@@ -15,6 +15,7 @@ final class AlertViewController: UIViewController {
     private let disposeBag = DisposeBag()
     var completion: ((Bool) -> ())!
     
+    @IBOutlet private weak var closeButton: UIButton!
     @IBOutlet private weak var alertView: UIView!
     @IBOutlet private weak var bottomConst: NSLayoutConstraint!
     @IBOutlet private weak var containerView: UIView!
@@ -102,6 +103,13 @@ extension AlertViewController {
     }
     
     private func setBind() {
+        self.closeButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.dismiss(animated: true, completion: {
+                    self?.completion(false)
+                })
+            }).disposed(by: self.disposeBag)
+        
         self.rightButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 self?.dismiss(animated: true, completion: {
@@ -112,7 +120,7 @@ extension AlertViewController {
         self.leftButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 self?.dismiss(animated: true, completion: {
-                    self?.completion(true)
+                    self?.completion(false)
                 })
             }).disposed(by: self.disposeBag)
     }
