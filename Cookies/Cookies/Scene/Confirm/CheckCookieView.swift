@@ -64,4 +64,18 @@ final class CheckCookieView: UIView {
         }
     }
     
+    func setEnableCount(count: Int) {
+        switch count {
+        case 4:
+            cookieImageView.image = UIImage(named: "cookie")
+        case 3:
+            cookieImageView.image = UIImage(named: "cookie_quater")
+        case 2:
+            cookieImageView.image = UIImage(named: "cookie_half")
+        case 1:
+            cookieImageView.image = UIImage(named: "cookie_last")
+        default:
+            break
+        }
+    }
 }

@@ -21,6 +21,7 @@ final class HomeViewController: UIViewController {
     private let userLocation    = BehaviorSubject<CLLocationCoordinate2D>(value: CLLocationCoordinate2D())
     private let guideDismiss    = PublishSubject<String>()
     private let tappedMarker    = BehaviorRelay<NMFOverlay?>(value: nil)
+    private let readLetter      = PublishSubject<(String, Int)>()
     
     private let disposeBag      = DisposeBag()
     private let viewModel       = HomeViewModel(service: APIService())
@@ -91,21 +92,21 @@ extension HomeViewController {
         Observable.combineLatest(self.naverMap.rx.mapViewRegionDidChanging.startWith(0).map { [weak self] _ in return self?.naverMap }
             .unwrap(),
                                  self.userLocation.filter { $0.isValid })
-            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
             .debug("[HomeViewController] mapViewRegionDidChanging")
             .map { (mapView, location) in
-//                return (userLat: location.latitude,
-//                        userLng: location.latitude,
-//                        topRightLat: mapView.contentBounds.northEastLat,
-//                        topRightLng: mapView.contentBounds.northEastLng,
-//                        bottomLeftLat: mapView.contentBounds.southWestLat,
-//                        bottomLeftLng: mapView.contentBounds.southWestLng)
-                return (userLat: 37.4952339,
-                        userLng: 127.0382079,
-                        topRightLat: 37.4882018,
-                        topRightLng: 127.0314238,
-                        bottomLeftLat: 37.5035999,
-                        bottomLeftLng: 127.0486473)
+                return (userLat: location.latitude,
+                        userLng: location.latitude,
+                        topRightLat: mapView.contentBounds.northEastLat,
+                        topRightLng: mapView.contentBounds.northEastLng,
+                        bottomLeftLat: mapView.contentBounds.southWestLat,
+                        bottomLeftLng: mapView.contentBounds.southWestLng)
+//                return (userLat: 37.4952339,
+//                        userLng: 127.0382079,
+//                        topRightLat: 37.4882018,
+//                        topRightLng: 127.0314238,
+//                        bottomLeftLat: 37.5035999,
+//                        bottomLeftLng: 127.0486473)
             }
             .bind(to: moveMap)
             .disposed(by: self.disposeBag)
@@ -140,8 +141,25 @@ extension HomeViewController {
                 
                 if let marker = overlay as? NMFMarker {
                     marker.iconImage = NMFOverlayImage(image: UIImage(named: "selectPin")!)
+                    let id = String(marker.userInfo["id"] as! Int)
+                    let count = marker.userInfo["count"] as! Int
+                    self.readLetter.onNext((id, count))
                 }
+                
             }).disposed(by: self.disposeBag)
+        
+        let confirmRead = self.readLetter
+            .flatMapLatest { [weak self] letter -> Observable<String> in
+                guard let self = self else { return .empty() }
+                let cookieView = CheckCookieView()
+                cookieView.setEnableCount(count: letter.1)
+                return AlertViewController.createInstance((contentView: cookieView,
+                                                           leftButtonTitle: nil,
+                                                           rightButtonTitle: "쿠키 줍기"))
+                .getStream(WithPresenter: self, presentationStyle: .overCurrentContext)
+                .filter { $0 }
+                .map { _ in letter.0 }
+            }
         
         let tappedWrite = self.menuView.rx.tappedWrite
             .flatMapLatest { [weak self] _ -> Observable<String> in
@@ -163,7 +181,7 @@ extension HomeViewController {
             .bind(to: writeLetter)
             .disposed(by: self.disposeBag)
         
-        let input = HomeViewModel.Input(readLetter: .just("1"),
+        let input = HomeViewModel.Input(readLetter: confirmRead.asObservable(),
                                         moveMap: moveMap.asObservable(),
                                         write: writeLetter.asObservable()
         )
@@ -182,7 +200,10 @@ extension HomeViewController {
                     marker.position = NMGLatLng(lat: cookie.lat, lng: cookie.lng)
                     marker.mapView = self.naverMap
                     marker.iconImage = NMFOverlayImage(image: UIImage(named: "disablePin")!)
-                    marker.userInfo = ["isAble": false]
+                    marker.userInfo = ["isAble": false,
+                                       "id": cookie.id,
+                                       "count": cookie.enableCount
+                    ]
                     self.marker.insert(marker)
                 }
                 
@@ -191,7 +212,9 @@ extension HomeViewController {
                     marker.position = NMGLatLng(lat: cookie.lat, lng: cookie.lng)
                     marker.mapView = self.naverMap
                     marker.iconImage = NMFOverlayImage(image: UIImage(named: "unSelectPin")!)
-                    marker.userInfo = ["isAble": true]
+                    marker.userInfo = ["isAble": true,
+                                       "id": cookie.id,
+                                       "count": cookie.enableCount]
                     marker.touchHandler = { [weak self] overlay in
                         self?.tappedMarker.accept(overlay)
                         return true
@@ -203,8 +226,23 @@ extension HomeViewController {
         
         output.detailLetter
             .debug("[HomeViewController] detailLetter")
-            .subscribe(onNext: { [weak self] letter in
+            .flatMapLatest({ [weak self] letter -> Observable<Void> in
+                guard let self = self else { return .empty() }
+                let writeView = WriteView.loadView()
+                writeView.isRead(name: letter.nickname,
+                                 content: letter.content,
+                                 enableCount: letter.enableCount)
                 
+                return AlertViewController.createInstance((contentView: writeView,
+                                                           leftButtonTitle: nil,
+                                                           rightButtonTitle: "쿠키 줍줍 완료!"))
+                    .getStream(WithPresenter: self, presentationStyle: .overCurrentContext)
+                    .mapToVoid()
+            })
+            .subscribe(onNext: { [weak self] in
+                self?.marker.filter { $0.userInfo["isAble"] as! Bool }.forEach { marker in
+                    marker.iconImage = NMFOverlayImage(image: UIImage(named: "unSelectPin")!)
+                }
             }).disposed(by: self.disposeBag)
         
         output.isWrite

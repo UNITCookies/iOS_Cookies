@@ -42,10 +42,11 @@ class HomeViewModel {
 extension HomeViewModel {
     func transform(input: HomeViewModel.Input) -> HomeViewModel.Output {
         let letter = input.readLetter
+            .debug("[HomeViewModel] input.readLetter")
             .flatMapLatest { [weak self] id -> Observable<Model.Letter> in
                 guard let self = self else { return .empty() }
                 return self.service.fetchReadLetter(id: id)
-            }
+            }.debug("[HomeViewModel] fetchReadLetter")
         
         let pins = input.moveMap
             .flatMapLatest { [weak self] params -> Observable<Model.Pin> in
