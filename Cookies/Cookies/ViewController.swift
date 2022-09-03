@@ -9,8 +9,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-import NMapsMap
-
 class ViewController: UIViewController {
     private let viewModel  = ViewModel()
     private let disposeBag = DisposeBag()
@@ -22,8 +20,8 @@ class ViewController: UIViewController {
         
         self.setBind()
         
-        let naverMapView = NMFNaverMapView(frame: view.frame)
-                view.addSubview(naverMapView)
+//        let naverMapView = NMFNaverMapView(frame: view.frame)
+//                view.addSubview(naverMapView)
     }
     
     private func setBind() {

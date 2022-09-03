@@ -4,6 +4,8 @@
 <dict>
 	<key>NMFClientId</key>
 	<string>8fbzcv2xfc</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>사용자의 위치를 쿠키를 남기는데 사용합니다.</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
