@@ -9,6 +9,8 @@ import UIKit
 
 final class WriteView: UIView {
     @IBOutlet private weak var messageTextField: UITextView!
+    @IBOutlet private weak var seeDetailCookieImageView: UIImageView!
+    
     public var message: String {
         self.messageTextField.text
     }
@@ -22,5 +24,6 @@ final class WriteView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.messageTextField.backgroundColor = .white
+        seeDetailCookieImageView.isHidden = true
     }
 }
