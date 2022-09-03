@@ -19,8 +19,8 @@ extension API.TempService: APIConfigWithError {
     static let domainConfig = CookieDomain.self
     static let serviceError = MockError.self
     
-    var path: String { return "" }
-    var method: HTTPMethod { return .get }
+    var path: String { return "http://43.200.232.27:8080/member" }
+    var method: HTTPMethod { return .post }
     var parameters: API.Parameter? {
         let params = [String:Any]()
         return .map(params)

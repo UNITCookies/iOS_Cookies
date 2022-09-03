@@ -4,6 +4,11 @@
 <dict>
 	<key>NMFClientId</key>
 	<string>8fbzcv2xfc</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

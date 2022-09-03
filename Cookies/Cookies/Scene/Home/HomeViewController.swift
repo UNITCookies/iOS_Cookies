@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import NMapsMap
+import Alamofire
 
 final class HomeViewController: UIViewController {
     
@@ -25,6 +26,13 @@ final class HomeViewController: UIViewController {
         self.setViews()
         self.presentGuideView()
         self.setBind()
+
+//        Observable.just(())
+//            .flatMap { _ -> Observable<[Int]> in
+//                return API.TempService(id: "").request()
+//            }.subscribe(onNext: { _ in
+//            
+//            }).disposed(by: self.disposeBag)
     }
 }
 
@@ -54,7 +62,7 @@ extension HomeViewController {
                     .filter { $0 }
                     .map { _ in messageView.message }
             }
-            .subscribe(onNext: { [weak self] message in
+            .subscribe(onNext: { message in
                 print("message: \(message)")
 //                let vc = AlertViewController.createInstance(())
 //                self?.present(vc, animated: true)
