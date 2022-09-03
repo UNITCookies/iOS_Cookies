@@ -17,10 +17,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="306" height="340"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OD5-hN-vcp">
-                            <rect key="frame" x="0.0" y="0.0" width="306" height="95"/>
+                            <rect key="frame" x="0.0" y="0.0" width="306" height="80"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="C87-pd-Qz2">
-                                    <rect key="frame" x="25" y="14" width="256" height="79"/>
+                                    <rect key="frame" x="25" y="14" width="256" height="64"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="메세지를 작성해주세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKX-m4-HFB">
                                             <rect key="frame" x="0.0" y="0.0" width="256" height="24"/>
@@ -29,7 +29,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="이곳에 담긴 추억이나 들었던 음악을 알려주셔도 좋습니다:)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zcl-hH-vze">
-                                            <rect key="frame" x="0.0" y="29" width="256" height="50"/>
+                                            <rect key="frame" x="0.0" y="29" width="256" height="35"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                             <color key="textColor" red="0.63921568627450975" green="0.63921568627450975" blue="0.63921568627450975" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
@@ -46,23 +46,35 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1IL-vx-quO">
-                            <rect key="frame" x="0.0" y="117" width="306" height="1"/>
+                            <rect key="frame" x="0.0" y="102" width="306" height="1"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="MaJ-9X-hQQ"/>
                             </constraints>
                         </view>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fg2-g6-nf2">
-                            <rect key="frame" x="0.0" y="140" width="306" height="200"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2mx-uV-j4j">
+                            <rect key="frame" x="0.0" y="125" width="306" height="215"/>
+                            <subviews>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fg2-g6-nf2">
+                                    <rect key="frame" x="25" y="0.0" width="256" height="200"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="200" id="aGj-E2-d4b"/>
+                                    </constraints>
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                </textView>
+                            </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="200" id="aGj-E2-d4b"/>
+                                <constraint firstAttribute="trailing" secondItem="fg2-g6-nf2" secondAttribute="trailing" constant="25" id="6oi-nK-wGj"/>
+                                <constraint firstItem="fg2-g6-nf2" firstAttribute="leading" secondItem="2mx-uV-j4j" secondAttribute="leading" constant="25" id="Isi-Yp-alw"/>
+                                <constraint firstAttribute="bottom" secondItem="fg2-g6-nf2" secondAttribute="bottom" constant="15" id="OD0-g3-19o"/>
+                                <constraint firstItem="fg2-g6-nf2" firstAttribute="top" secondItem="2mx-uV-j4j" secondAttribute="top" id="eu3-tg-cf6"/>
                             </constraints>
-                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                        </textView>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </stackView>
