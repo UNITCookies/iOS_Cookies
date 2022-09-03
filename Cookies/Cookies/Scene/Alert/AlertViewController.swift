@@ -19,6 +19,7 @@ final class AlertViewController: UIViewController {
     @IBOutlet private weak var bottomConst: NSLayoutConstraint!
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var buttonStackView: UIStackView!
+    @IBOutlet private weak var shadowView: UIView!
     
     private let leftButton: UIButton = {
         let btn = UIButton()
@@ -71,6 +72,14 @@ final class AlertViewController: UIViewController {
 
 extension AlertViewController {
     private func setupUI() {
+        shadowView.layer.shadowColor = UIColor.black.cgColor
+        shadowView.layer.shadowOpacity = 0.1
+        shadowView.layer.shadowOffset = CGSize(width: 1, height: 0)
+        shadowView.layer.shadowRadius = 5
+        shadowView.layer.masksToBounds = false
+        shadowView.layer.shadowPath = UIBezierPath(rect: view.bounds).cgPath
+        
+        
         if let rightTitle = self.rightTItle {
             self.rightButton.setTitle(rightTitle, for: .normal)
             self.buttonStackView.addArrangedSubview(self.rightButton)
