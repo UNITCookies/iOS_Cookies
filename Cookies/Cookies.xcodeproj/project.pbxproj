@@ -10,6 +10,14 @@
 		042FE5FEF5ABEE9292B5B851 /* Pods_Cookies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF61FF7469240FF30188976 /* Pods_Cookies.framework */; };
 		331EA25EEA6F57F555B2DB13 /* Pods_Cookies_CookiesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 825EB6E71034BB775AC625B8 /* Pods_Cookies_CookiesUITests.framework */; };
 		3C453D8028C3576B00D4ADF3 /* CookieToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C453D7F28C3576B00D4ADF3 /* CookieToast.swift */; };
+		3C453D8528C3815300D4ADF3 /* CheckCookieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C453D8428C3815300D4ADF3 /* CheckCookieView.swift */; };
+		3C453D8D28C3929F00D4ADF3 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3C453D8728C3929F00D4ADF3 /* Pretendard-Regular.otf */; };
+		3C453D8E28C3929F00D4ADF3 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3C453D8828C3929F00D4ADF3 /* Pretendard-Black.otf */; };
+		3C453D8F28C3929F00D4ADF3 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3C453D8928C3929F00D4ADF3 /* Pretendard-Medium.otf */; };
+		3C453D9028C3929F00D4ADF3 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3C453D8A28C3929F00D4ADF3 /* Pretendard-ExtraBold.otf */; };
+		3C453D9128C3929F00D4ADF3 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3C453D8B28C3929F00D4ADF3 /* Pretendard-Bold.otf */; };
+		3C453D9228C3929F00D4ADF3 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3C453D8C28C3929F00D4ADF3 /* Pretendard-SemiBold.otf */; };
+		3C453D9428C392D300D4ADF3 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C453D9328C392D300D4ADF3 /* UIFont+.swift */; };
 		6F2E373F28C34D3400823563 /* BottomMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2E373E28C34D3400823563 /* BottomMenuView.swift */; };
 		6F2E374128C34D3D00823563 /* BottomMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F2E374028C34D3D00823563 /* BottomMenuView.xib */; };
 		6F2E374428C35EE800823563 /* WriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2E374328C35EE800823563 /* WriteView.swift */; };
@@ -72,6 +80,14 @@
 
 /* Begin PBXFileReference section */
 		3C453D7F28C3576B00D4ADF3 /* CookieToast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CookieToast.swift; sourceTree = "<group>"; };
+		3C453D8428C3815300D4ADF3 /* CheckCookieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckCookieView.swift; sourceTree = "<group>"; };
+		3C453D8728C3929F00D4ADF3 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
+		3C453D8828C3929F00D4ADF3 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
+		3C453D8928C3929F00D4ADF3 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
+		3C453D8A28C3929F00D4ADF3 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
+		3C453D8B28C3929F00D4ADF3 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
+		3C453D8C28C3929F00D4ADF3 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		3C453D9328C392D300D4ADF3 /* UIFont+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		460B4154820812C3D67A7961 /* Pods-Cookies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cookies.release.xcconfig"; path = "Target Support Files/Pods-Cookies/Pods-Cookies.release.xcconfig"; sourceTree = "<group>"; };
 		6460C65FCE166EC0D0255295 /* Pods-CookiesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CookiesTests.release.xcconfig"; path = "Target Support Files/Pods-CookiesTests/Pods-CookiesTests.release.xcconfig"; sourceTree = "<group>"; };
 		6F2E373E28C34D3400823563 /* BottomMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuView.swift; sourceTree = "<group>"; };
@@ -173,6 +189,28 @@
 			path = Share;
 			sourceTree = "<group>";
 		};
+		3C453D8328C37F2F00D4ADF3 /* Confirm */ = {
+			isa = PBXGroup;
+			children = (
+				3C453D8428C3815300D4ADF3 /* CheckCookieView.swift */,
+			);
+			path = Confirm;
+			sourceTree = "<group>";
+		};
+		3C453D8628C3929F00D4ADF3 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				3C453D9328C392D300D4ADF3 /* UIFont+.swift */,
+				3C453D8728C3929F00D4ADF3 /* Pretendard-Regular.otf */,
+				3C453D8828C3929F00D4ADF3 /* Pretendard-Black.otf */,
+				3C453D8928C3929F00D4ADF3 /* Pretendard-Medium.otf */,
+				3C453D8A28C3929F00D4ADF3 /* Pretendard-ExtraBold.otf */,
+				3C453D8B28C3929F00D4ADF3 /* Pretendard-Bold.otf */,
+				3C453D8C28C3929F00D4ADF3 /* Pretendard-SemiBold.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		63736979E36208536D0CD9F9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,6 +263,7 @@
 		6F72CD1428C2F5CE0038BC32 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				3C453D8628C3929F00D4ADF3 /* Font */,
 				3C453D7E28C3576B00D4ADF3 /* Share */,
 				6FC8D3B228C31739000A9125 /* Protocol */,
 				6FC8D3AF28C313C5000A9125 /* Utility */,
@@ -322,6 +361,7 @@
 				6FC8D3CF28C33263000A9125 /* Guide */,
 				6FC8D3B528C31C16000A9125 /* Home */,
 				6F6A1BD428C338E500731B75 /* Write */,
+				3C453D8328C37F2F00D4ADF3 /* Confirm */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -485,10 +525,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FC8D3C028C327A9000A9125 /* CookieView.xib in Resources */,
+				3C453D9128C3929F00D4ADF3 /* Pretendard-Bold.otf in Resources */,
+				3C453D8F28C3929F00D4ADF3 /* Pretendard-Medium.otf in Resources */,
+				3C453D9228C3929F00D4ADF3 /* Pretendard-SemiBold.otf in Resources */,
 				6F6A1BD828C3391200731B75 /* Alert.storyboard in Resources */,
 				6FB2B78728C2E8B30015331B /* LaunchScreen.storyboard in Resources */,
 				6F2E374628C35EEE00823563 /* WriteView.xib in Resources */,
+				3C453D8E28C3929F00D4ADF3 /* Pretendard-Black.otf in Resources */,
+				3C453D9028C3929F00D4ADF3 /* Pretendard-ExtraBold.otf in Resources */,
 				6FB2B78428C2E8B30015331B /* Assets.xcassets in Resources */,
+				3C453D8D28C3929F00D4ADF3 /* Pretendard-Regular.otf in Resources */,
 				6F2E374128C34D3D00823563 /* BottomMenuView.xib in Resources */,
 				6FB2B78228C2E8B10015331B /* Main.storyboard in Resources */,
 			);
@@ -621,6 +667,7 @@
 				6F6A1BD628C338F900731B75 /* AlertViewController.swift in Sources */,
 				6FC8D3AC28C31294000A9125 /* CKRootViewController.swift in Sources */,
 				6FB2B77F28C2E8B10015331B /* ViewController.swift in Sources */,
+				3C453D8528C3815300D4ADF3 /* CheckCookieView.swift in Sources */,
 				6FC8D3B728C31C2E000A9125 /* HomeViewController.swift in Sources */,
 				6F72CD2128C2FBDF0038BC32 /* APIError.Code.swift in Sources */,
 				3C453D8028C3576B00D4ADF3 /* CookieToast.swift in Sources */,
@@ -639,6 +686,7 @@
 				6FC8D3C428C328C6000A9125 /* NSObject+.swift in Sources */,
 				6F2E373F28C34D3400823563 /* BottomMenuView.swift in Sources */,
 				6FC8D3B928C31FFD000A9125 /* HomeViewController+Gesture.swift in Sources */,
+				3C453D9428C392D300D4ADF3 /* UIFont+.swift in Sources */,
 				6F72CD1A28C2FADE0038BC32 /* APIConfig+Error.swift in Sources */,
 				6FC8D3CC28C3320F000A9125 /* TransitionDelegate.swift in Sources */,
 				6F72CD1C28C2FAFB0038BC32 /* API.Parameter.swift in Sources */,
