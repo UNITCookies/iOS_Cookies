@@ -17,6 +17,7 @@
 		3C453D9828C3A60900D4ADF3 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C453D9728C3A60900D4ADF3 /* UIColor+.swift */; };
 		3CDA2AE828C3BDA30079C857 /* CookieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDA2AE728C3BDA30079C857 /* CookieListViewController.swift */; };
 		3CDA2AEA28C3BF310079C857 /* CookieListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDA2AE928C3BF310079C857 /* CookieListTableViewCell.swift */; };
+		3CDA2AEB28C3D0EF0079C857 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3C453D9628C3A4BE00D4ADF3 /* Pretendard-Light.otf */; };
 		6F2E373F28C34D3400823563 /* BottomMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2E373E28C34D3400823563 /* BottomMenuView.swift */; };
 		6F2E374128C34D3D00823563 /* BottomMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F2E374028C34D3D00823563 /* BottomMenuView.xib */; };
 		6F2E374428C35EE800823563 /* WriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2E374328C35EE800823563 /* WriteView.swift */; };
@@ -585,6 +586,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CDA2AEB28C3D0EF0079C857 /* Pretendard-Light.otf in Resources */,
 				6FC8D3C028C327A9000A9125 /* CookieView.xib in Resources */,
 				3C453D9228C3929F00D4ADF3 /* Pretendard-SemiBold.otf in Resources */,
 				6F6A1BD828C3391200731B75 /* Alert.storyboard in Resources */,

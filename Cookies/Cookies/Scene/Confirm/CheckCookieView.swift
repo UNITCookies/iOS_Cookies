@@ -36,12 +36,12 @@ final class CheckCookieView: UIView {
         cookieImageView.image = UIImage(named: "cookie")
         
         titleLaebl.text = "쿠키를 확인할까요?"
-        titleLaebl.font = UIFont(name: "Pretendard-SemiBold", size: 20)
+        titleLaebl.font = .title2
         titleLaebl.textColor = .black
         
         explainLaebl.text = "코인 1개를 사용하여 메세지를 읽습니다"
-        explainLaebl.font = UIFont(name: "Pretendard-Regular", size: 14)
-        explainLaebl.textColor = UIColor(red: 163/255.0, green: 163.0/255.0, blue: 163.0/255.0, alpha: 1.0)
+        explainLaebl.font = .text2
+        explainLaebl.textColor = .gray
     }
     
     func makeConstraints() {

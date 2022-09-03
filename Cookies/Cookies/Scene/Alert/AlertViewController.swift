@@ -29,8 +29,9 @@ final class AlertViewController: UIViewController {
     
     private let rightButton: UIButton = {
         let btn = UIButton()
-        btn.setTitleColor(.white, for: .normal)
-        btn.backgroundColor = .orange
+        btn.setTitleColor(.sub, for: .normal)
+        btn.backgroundColor = .main
+        btn.titleLabel?.font = .title2
         btn.layer.addBorder([.top, .bottom], color: UIColor.black, width: 1)
         return btn
     }()

@@ -16,9 +16,20 @@ class GuideViewController: UIViewController {
     @IBOutlet private weak var backView: UIView!
     @IBOutlet private weak var dropCookieButton: UIButton!
     @IBOutlet private weak var skipButton: UIButton!
+    @IBOutlet private weak var explainLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        skipButton.titleLabel?.font = .text1
+        skipButton.setTitle("다음에 할까요...?", for: .normal)
+        skipButton.setTitleColor(.sub, for: .normal)
+
+        explainLabel.text = "쿠키를 눌러 메세지를 남겨보세요!"
+        explainLabel.font = .text1
+        explainLabel.textColor = .white
+        
         self.setBind()
     }
 }
@@ -40,7 +51,8 @@ extension GuideViewController {
                     .getStream(WithPresenter: self,
                                presentationStyle: .overCurrentContext)
                     .filter { $0 }
-                    .map { _ in messageView.message }
+                    .map { _ in messageView.message
+                    }
             }
             .subscribe(onNext: { [weak self] _ in
                 self?.dismiss(animated: true)
@@ -59,7 +71,7 @@ extension GuideViewController: VCFactorable {
         
         self.transitioning.present.didPresnet = { [weak self] in
             guard let self = self else { return }
-            self.backView.alpha = 0.5
+            self.backView.alpha = 1.0
         }
         
         
