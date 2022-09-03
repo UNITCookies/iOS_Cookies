@@ -28,6 +28,8 @@
 		6F2FE36428C39B5E0080EFDE /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2FE36328C39B5E0080EFDE /* Model.swift */; };
 		6F2FE36628C39B7D0080EFDE /* Model.Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2FE36528C39B7D0080EFDE /* Model.Letter.swift */; };
 		6F2FE36828C3A3A10080EFDE /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2FE36728C3A3A10080EFDE /* APIService.swift */; };
+		6F2FE36A28C3B5AA0080EFDE /* CALayer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2FE36928C3B5AA0080EFDE /* CALayer+.swift */; };
+		6F2FE36C28C3BA470080EFDE /* TransitionSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2FE36B28C3BA470080EFDE /* TransitionSetting.swift */; };
 		6F6A1BD628C338F900731B75 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6A1BD528C338F900731B75 /* AlertViewController.swift */; };
 		6F6A1BD828C3391200731B75 /* Alert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F6A1BD728C3391200731B75 /* Alert.storyboard */; };
 		6F72CD1028C2F1B90038BC32 /* Viewmodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F72CD0F28C2F1B90038BC32 /* Viewmodel.swift */; };
@@ -106,6 +108,8 @@
 		6F2FE36328C39B5E0080EFDE /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		6F2FE36528C39B7D0080EFDE /* Model.Letter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.Letter.swift; sourceTree = "<group>"; };
 		6F2FE36728C3A3A10080EFDE /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		6F2FE36928C3B5AA0080EFDE /* CALayer+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+.swift"; sourceTree = "<group>"; };
+		6F2FE36B28C3BA470080EFDE /* TransitionSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionSetting.swift; sourceTree = "<group>"; };
 		6F6A1BD528C338F900731B75 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		6F6A1BD728C3391200731B75 /* Alert.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Alert.storyboard; sourceTree = "<group>"; };
 		6F72CD0F28C2F1B90038BC32 /* Viewmodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Viewmodel.swift; sourceTree = "<group>"; };
@@ -390,6 +394,7 @@
 				6FC8D3A828C3123F000A9125 /* CookiesTransition.swift */,
 				6FC8D3B028C31544000A9125 /* CookiesScene.swift */,
 				6FC8D3CB28C3320F000A9125 /* TransitionDelegate.swift */,
+				6F2FE36B28C3BA470080EFDE /* TransitionSetting.swift */,
 			);
 			path = Transition;
 			sourceTree = "<group>";
@@ -415,6 +420,7 @@
 				6FC8D3C128C3288F000A9125 /* UIView+Layout.swift */,
 				6FC8D3C328C328C6000A9125 /* NSObject+.swift */,
 				6F2E374728C3616500823563 /* UIMonad.swift */,
+				6F2FE36928C3B5AA0080EFDE /* CALayer+.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -709,6 +715,7 @@
 				6FC8D3B728C31C2E000A9125 /* HomeViewController.swift in Sources */,
 				6F2FE36628C39B7D0080EFDE /* Model.Letter.swift in Sources */,
 				6F72CD2128C2FBDF0038BC32 /* APIError.Code.swift in Sources */,
+				6F2FE36A28C3B5AA0080EFDE /* CALayer+.swift in Sources */,
 				3C453D8028C3576B00D4ADF3 /* CookieToast.swift in Sources */,
 				6F2E374828C3616500823563 /* UIMonad.swift in Sources */,
 				6FC8D3BE28C327A0000A9125 /* CookieView.swift in Sources */,
@@ -722,6 +729,7 @@
 				6F2E374428C35EE800823563 /* WriteView.swift in Sources */,
 				6FC8D3CE28C3325D000A9125 /* GuideViewController.swift in Sources */,
 				6FC8D3BB28C320C9000A9125 /* UIView+.swift in Sources */,
+				6F2FE36C28C3BA470080EFDE /* TransitionSetting.swift in Sources */,
 				6F72CD2328C2FCC40038BC32 /* CookieDomain.swift in Sources */,
 				6FC8D3C228C3288F000A9125 /* UIView+Layout.swift in Sources */,
 				6FC8D3C428C328C6000A9125 /* NSObject+.swift in Sources */,

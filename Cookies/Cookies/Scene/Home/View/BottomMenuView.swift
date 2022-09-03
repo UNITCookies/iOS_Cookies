@@ -11,6 +11,7 @@ import RxCocoa
 
 final class BottomMenuView: UIView {
     
+    @IBOutlet private weak var containerView: UIView!
     @IBOutlet fileprivate weak var writeButton: UIButton!
     
     static func loadView() -> BottomMenuView {
@@ -21,6 +22,7 @@ final class BottomMenuView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.containerView.layer.cornerRadius = 30
     }
 }
 

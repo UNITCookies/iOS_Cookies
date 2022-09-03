@@ -73,7 +73,7 @@
                             </view>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="374" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="72a-BY-HWK">
                                 <rect key="frame" x="20" y="704" width="374" height="128"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HHX-Oe-Y7e">
                                 <rect key="frame" x="186" y="437.5" width="42" height="21"/>
@@ -117,20 +117,33 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="가나다라 마바사 쿠키를 먹어보세요 ㄴ먀냠냠" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rb5-on-Si6">
-                                <rect key="frame" x="20" y="64" width="364" height="64.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="AIS-dC-Gin">
+                                <rect key="frame" x="27" y="70" width="272.5" height="101"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="초코송이님 반가워요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U54-L9-ZUD">
+                                        <rect key="frame" x="0.0" y="0.0" width="272.5" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BcZ-8g-thN">
+                                        <rect key="frame" x="0.0" y="29" width="272.5" height="72"/>
+                                        <string key="text">이곳에서 들었던 생각을
+쿠키로 남겨볼까요?</string>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ck5-8D-b3h">
-                                <rect key="frame" x="182.5" y="432.5" width="49" height="31"/>
+                                <rect key="frame" x="183" y="432.5" width="48.5" height="31"/>
                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="쿠키"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ycx-Od-CLf">
-                                <rect key="frame" x="343" y="811" width="51" height="31"/>
+                                <rect key="frame" x="343.5" y="811" width="50.5" height="31"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="skip"/>
@@ -140,16 +153,15 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ck5-8D-b3h" firstAttribute="centerX" secondItem="DHN-p3-86b" secondAttribute="centerX" id="0wd-nE-hSa"/>
-                            <constraint firstItem="Rb5-on-Si6" firstAttribute="leading" secondItem="bzZ-Ze-yTz" secondAttribute="leading" constant="20" id="3SQ-fI-Txf"/>
                             <constraint firstItem="qyo-T2-ma9" firstAttribute="top" secondItem="DHN-p3-86b" secondAttribute="top" id="5pS-iS-wgm"/>
                             <constraint firstItem="bzZ-Ze-yTz" firstAttribute="trailing" secondItem="ycx-Od-CLf" secondAttribute="trailing" constant="20" id="A62-Pj-Ebp"/>
                             <constraint firstAttribute="bottom" secondItem="qyo-T2-ma9" secondAttribute="bottom" id="AG7-tJ-dAI"/>
                             <constraint firstItem="ck5-8D-b3h" firstAttribute="centerY" secondItem="DHN-p3-86b" secondAttribute="centerY" id="Axc-wT-aSO"/>
+                            <constraint firstItem="AIS-dC-Gin" firstAttribute="leading" secondItem="bzZ-Ze-yTz" secondAttribute="leading" constant="27" id="B6H-Mj-dOv"/>
                             <constraint firstItem="qyo-T2-ma9" firstAttribute="leading" secondItem="bzZ-Ze-yTz" secondAttribute="leading" id="Q9J-Io-8eQ"/>
-                            <constraint firstAttribute="trailing" secondItem="Rb5-on-Si6" secondAttribute="trailing" constant="30" id="k1p-Ti-PZ8"/>
+                            <constraint firstItem="AIS-dC-Gin" firstAttribute="top" secondItem="bzZ-Ze-yTz" secondAttribute="top" constant="26" id="Y26-Ru-VaP"/>
                             <constraint firstItem="bzZ-Ze-yTz" firstAttribute="trailing" secondItem="qyo-T2-ma9" secondAttribute="trailing" id="s3O-ad-xv5"/>
                             <constraint firstItem="bzZ-Ze-yTz" firstAttribute="bottom" secondItem="ycx-Od-CLf" secondAttribute="bottom" constant="20" id="wRC-Ke-dMo"/>
-                            <constraint firstItem="Rb5-on-Si6" firstAttribute="top" secondItem="bzZ-Ze-yTz" secondAttribute="top" constant="20" id="zCs-3L-qBM"/>
                         </constraints>
                     </view>
                     <connections>

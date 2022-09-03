@@ -21,6 +21,6 @@ final class WriteView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.messageTextField.layer.cornerRadius = 10.0
+        self.messageTextField.backgroundColor = .white
     }
 }
