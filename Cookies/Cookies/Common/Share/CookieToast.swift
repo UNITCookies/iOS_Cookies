@@ -13,7 +13,8 @@ class CookieToast : UIView {
     
     // MARK: - UI components
     
-    private let messageLabel = UILabel()
+    private let titleLabel = UILabel()
+    private let explainLabel = UILabel()
     
     // MARK: - Variables and Properties
     
@@ -33,27 +34,44 @@ class CookieToast : UIView {
     // MARK: - Function
     
     private func setupUI() {
-        self.backgroundColor = .lightGray
+        self.backgroundColor = .main
+        self.layer.cornerRadius = 20
         self.alpha = 0.0
         self.isHidden = true
         
-        messageLabel.textAlignment = .center
-        messageLabel.font = .systemFont(ofSize: 17)
-        messageLabel.textColor = .black
-        messageLabel.backgroundColor = .clear
+        titleLabel.textAlignment = .center
+        titleLabel.font = .pop1
+        titleLabel.textColor = .sub
+        titleLabel.backgroundColor = .clear
+        
+        explainLabel.textAlignment = .center
+        explainLabel.font = .pop2
+        explainLabel.textColor = .sub
+        explainLabel.backgroundColor = .clear
     }
     
     private func makeConstraints() {
-        addSubview(messageLabel)
+        addSubview(titleLabel)
+        addSubview(explainLabel)
         
-        messageLabel.snp.makeConstraints {
-            $0.horizontalEdges.equalTo(self).inset(10)
-            $0.verticalEdges.equalTo(self).inset(5)
+        self.snp.makeConstraints {
+            $0.width.equalTo(249)
+        }
+        
+        titleLabel.snp.makeConstraints {
+            $0.top.equalTo(self.snp.top).offset(16)
+            $0.horizontalEdges.equalTo(self)
+        }
+        explainLabel.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(6)
+            $0.horizontalEdges.equalTo(titleLabel)
+            $0.bottom.equalTo(self.snp.bottom).inset(16)
         }
     }
     
-    public func show(message: String) {
-        messageLabel.text = message
+    public func show(title: String, explain: String) {
+        titleLabel.text = title
+        explainLabel.text = explain
         self.alpha = 0.0
         
         UIView.animate(withDuration: 2.0) {
