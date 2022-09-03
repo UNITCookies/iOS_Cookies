@@ -15,6 +15,8 @@
 		3C453D9228C3929F00D4ADF3 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3C453D8C28C3929F00D4ADF3 /* Pretendard-SemiBold.otf */; };
 		3C453D9428C392D300D4ADF3 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C453D9328C392D300D4ADF3 /* UIFont+.swift */; };
 		3C453D9828C3A60900D4ADF3 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C453D9728C3A60900D4ADF3 /* UIColor+.swift */; };
+		3CDA2AE828C3BDA30079C857 /* CookieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDA2AE728C3BDA30079C857 /* CookieListViewController.swift */; };
+		3CDA2AEA28C3BF310079C857 /* CookieListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDA2AE928C3BF310079C857 /* CookieListTableViewCell.swift */; };
 		6F2E373F28C34D3400823563 /* BottomMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2E373E28C34D3400823563 /* BottomMenuView.swift */; };
 		6F2E374128C34D3D00823563 /* BottomMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F2E374028C34D3D00823563 /* BottomMenuView.xib */; };
 		6F2E374428C35EE800823563 /* WriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2E374328C35EE800823563 /* WriteView.swift */; };
@@ -93,6 +95,8 @@
 		3C453D9328C392D300D4ADF3 /* UIFont+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		3C453D9628C3A4BE00D4ADF3 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
 		3C453D9728C3A60900D4ADF3 /* UIColor+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		3CDA2AE728C3BDA30079C857 /* CookieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieListViewController.swift; sourceTree = "<group>"; };
+		3CDA2AE928C3BF310079C857 /* CookieListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieListTableViewCell.swift; sourceTree = "<group>"; };
 		460B4154820812C3D67A7961 /* Pods-Cookies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cookies.release.xcconfig"; path = "Target Support Files/Pods-Cookies/Pods-Cookies.release.xcconfig"; sourceTree = "<group>"; };
 		6460C65FCE166EC0D0255295 /* Pods-CookiesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CookiesTests.release.xcconfig"; path = "Target Support Files/Pods-CookiesTests/Pods-CookiesTests.release.xcconfig"; sourceTree = "<group>"; };
 		6F2E373E28C34D3400823563 /* BottomMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuView.swift; sourceTree = "<group>"; };
@@ -224,6 +228,15 @@
 			path = Paragraph;
 			sourceTree = "<group>";
 		};
+		3CDA2AE628C3BD7C0079C857 /* CookieList */ = {
+			isa = PBXGroup;
+			children = (
+				3CDA2AE728C3BDA30079C857 /* CookieListViewController.swift */,
+				3CDA2AE928C3BF310079C857 /* CookieListTableViewCell.swift */,
+			);
+			path = CookieList;
+			sourceTree = "<group>";
+		};
 		63736979E36208536D0CD9F9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,7 +318,6 @@
 		6F72CD1428C2F5CE0038BC32 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				3C453D8628C3929F00D4ADF3 /* Font */,
 				6F2FE35328C38AFF0080EFDE /* DelegateProxy */,
 				3C453D8628C3929F00D4ADF3 /* Paragraph */,
 				3C453D7E28C3576B00D4ADF3 /* Share */,
@@ -408,6 +420,7 @@
 				6FC8D3B528C31C16000A9125 /* Home */,
 				6F6A1BD428C338E500731B75 /* Write */,
 				3C453D8328C37F2F00D4ADF3 /* Confirm */,
+				3CDA2AE628C3BD7C0079C857 /* CookieList */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -726,6 +739,7 @@
 				6F72CD1E28C2FB550038BC32 /* APIError.swift in Sources */,
 				6F72CD1028C2F1B90038BC32 /* Viewmodel.swift in Sources */,
 				6FB2B77D28C2E8B10015331B /* SceneDelegate.swift in Sources */,
+				3CDA2AEA28C3BF310079C857 /* CookieListTableViewCell.swift in Sources */,
 				6F2E374428C35EE800823563 /* WriteView.swift in Sources */,
 				6FC8D3CE28C3325D000A9125 /* GuideViewController.swift in Sources */,
 				6FC8D3BB28C320C9000A9125 /* UIView+.swift in Sources */,
@@ -744,6 +758,7 @@
 				6F72CD1C28C2FAFB0038BC32 /* API.Parameter.swift in Sources */,
 				6FC8D3AE28C313C0000A9125 /* VCFactory.swift in Sources */,
 				6F72CD1328C2F5AE0038BC32 /* API.swift in Sources */,
+				3CDA2AE828C3BDA30079C857 /* CookieListViewController.swift in Sources */,
 				6FC8D3B128C31544000A9125 /* CookiesScene.swift in Sources */,
 				6F2FE35528C38B0E0080EFDE /* RxNMFMapViewDelegateProxy.swift in Sources */,
 				6F72CD1828C2FA520038BC32 /* APIConfig+Request.swift in Sources */,
