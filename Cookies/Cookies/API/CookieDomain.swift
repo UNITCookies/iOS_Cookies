@@ -8,13 +8,13 @@
 import Alamofire
 
 struct CookieDomain: DomainConfig {
-    static let domain: String = ""
+    static let domain: String = "http://43.200.232.27:8080"
     static let manager: Alamofire.Session = {
         return Alamofire.Session(configuration: .default)
     }()
     
     static var defaultHeader: [String : String]? {
-        return ["Accept":"application/json"]
+        return nil
     }
     
     static var parameters: [String : Any?]? {

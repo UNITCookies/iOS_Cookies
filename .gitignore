@@ -34,6 +34,7 @@ xcuserdata/
 *.moved-aside
 *.xccheckout
 *.xcscmblueprint
+*.xcuserstate
 
 ## Obj-C/Swift specific
 *.hmap
@@ -112,3 +113,5 @@ iOSInjectionProject/
 
 # End of https://www.gitignore.io/api/xcode,swift,cocoapods
 Cookies/.DS_Store
+
+Cookies/Cookies/.DS_Store

@@ -8,6 +8,7 @@ target 'Cookies' do
     pod 'RxCocoa', '6.5.0'
     pod 'Alamofire', '5.6.2'
     pod 'NMapsMap','3.10.0'
+    pod 'SnapKit', '5.6.0'
 
   # Pods for Cookies
 
@@ -20,4 +21,10 @@ target 'Cookies' do
     # Pods for testing
   end
 
+end
+
+post_install do |installer|   
+      installer.pods_project.build_configurations.each do |config|
+        config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
+      end
 end
