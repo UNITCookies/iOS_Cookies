@@ -19,7 +19,7 @@ extension CookiesScene {
     var viewController: UIViewController {
         switch self {
         case .home:
-            let vc: ViewController = ViewController.createInstance(())
+            let vc: HomeViewController = HomeViewController.createInstance(())
             return vc
         }
     }
