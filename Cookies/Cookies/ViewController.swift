@@ -39,3 +39,10 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController: VCFactorable {
+    public static var storyboardIdentifier = "Main"
+    public static var vcIdentifier = "ViewController"
+    public func bindData(value: ()) {
+        
+    }
+}
