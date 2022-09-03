@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import NMapsMap
-import Alamofire
+import CoreLocation
 
 final class HomeViewController: UIViewController {
     
@@ -17,19 +17,22 @@ final class HomeViewController: UIViewController {
     @IBOutlet private weak var mapContainerView: UIView!
     
     
-    private let disposeBag = DisposeBag()
-    private let menuView    = BottomMenuView.loadView()
+    private let disposeBag      = DisposeBag()
+    private let viewModel       = HomeViewModel(service: APIService())
+    private let locationManager = CLLocationManager()
+    private let menuView        = BottomMenuView.loadView()
     private lazy var naverMap: NMFMapView = NMFMapView(frame: self.view.frame)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.locationManagerInit()
         self.setViews()
         self.presentGuideView()
         self.setBind()
 
 //        Observable.just(())
-//            .flatMap { _ -> Observable<[Int]> in
-//                return API.TempService(id: "").request()
+//            .flatMap { _ -> Observable<Model.Letter> in
+//                return API.ReadLetter(id: "1").request()
 //            }.subscribe(onNext: { _ in
 //            
 //            }).disposed(by: self.disposeBag)
@@ -37,6 +40,16 @@ final class HomeViewController: UIViewController {
 }
 
 extension HomeViewController {
+    private func locationManagerInit() {
+        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.requestWhenInUseAuthorization()
+
+        if CLLocationManager.locationServicesEnabled() {
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            self.locationManager.startUpdatingLocation()
+        }
+    }
+    
     private func setViews() {
         self.menuContainerView.addSubview(self.menuView)
         self.mapContainerView.addSubview(self.naverMap)
@@ -53,6 +66,32 @@ extension HomeViewController {
 
 extension HomeViewController {
     private func setBind() {
+        self.naverMap.rx.mapViewRegionIsChanging
+            .debug("[HomeViewController] mapViewRegionIsChanging")
+            .subscribe(onNext: { region in
+            
+        }).disposed(by: self.disposeBag)
+        
+        self.naverMap.rx.mapViewRegionDidChanging
+            .debug("[HomeViewController] mapViewRegionDidChanging")
+            .subscribe(onNext: { region in
+            
+            }).disposed(by: self.disposeBag)
+        
+        self.naverMap.rx.didTapMapView
+            .debug("[HomeViewController] didTapMapView")
+            .subscribe(onNext: {
+            
+        }).disposed(by: self.disposeBag)
+        
+        self.locationManager.rx.updateLocations
+            .map{ $0.coordinate }
+            .debug("[HomeViewController] updateLocations")
+            .subscribe(onNext: { coordinator in
+                
+            })
+            .disposed(by: self.disposeBag)
+        
         self.menuView.rx.tappedWrite
             .flatMapLatest { [weak self] _ -> Observable<String> in
                 guard let self = self else { return .empty() }
@@ -64,8 +103,15 @@ extension HomeViewController {
             }
             .subscribe(onNext: { message in
                 print("message: \(message)")
-//                let vc = AlertViewController.createInstance(())
-//                self?.present(vc, animated: true)
+            }).disposed(by: self.disposeBag)
+        
+        let input = HomeViewModel.Input(readLetter: .just("1"))
+        let output = self.viewModel.transform(input: input)
+        
+        output.detailLetter
+            .debug("[HomeViewController] detailLetter")
+            .subscribe(onNext: { [weak self] letter in
+            
             }).disposed(by: self.disposeBag)
     }
 }
