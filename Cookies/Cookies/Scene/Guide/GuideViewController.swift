@@ -18,6 +18,7 @@ class GuideViewController: UIViewController {
     @IBOutlet private weak var skipButton: UIButton!
     @IBOutlet private weak var explainLabel: UILabel!
     
+    private let dismissTrigger = PublishSubject<String>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,8 +55,11 @@ extension GuideViewController {
                     .map { _ in messageView.message
                     }
             }
-            .subscribe(onNext: { [weak self] _ in
-                self?.dismiss(animated: true)
+            .subscribe(onNext: { [weak self] message in
+                self?.dismiss(animated: true,
+                              completion: {
+                    self?.dismissTrigger.onNext(message)
+                })
             }).disposed(by: self.disposeBag)
     }
 }
@@ -63,7 +67,11 @@ extension GuideViewController {
 extension GuideViewController: VCFactorable {
     public static var storyboardIdentifier = "Main"
     public static var vcIdentifier = "GuideViewController"
-    public func bindData(value: ()) {
+    public func bindData(value: PublishSubject<String>) {
+        self.dismissTrigger
+            .bind(to: value)
+            .disposed(by: self.disposeBag)
+        
         self.transitioning.present.willPresent = { [weak self] in
             self?.backView.alpha = 0.0
             self?.view.layoutIfNeeded()

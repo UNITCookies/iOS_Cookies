@@ -78,6 +78,10 @@ class CookieToast : UIView {
             self.alpha = 1.0
             self.isHidden = false
         }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.hide()
+        }
     }
     
     public func hide() {

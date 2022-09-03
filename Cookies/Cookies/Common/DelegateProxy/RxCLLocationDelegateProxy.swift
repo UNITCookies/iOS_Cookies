@@ -42,6 +42,13 @@ extension CLLocation {
     }
 }
 
+extension CLLocationCoordinate2D {
+    public var isValid: Bool {
+        guard self.longitude != 0 && self.latitude != 0 else { return false }
+        return CLLocationCoordinate2DIsValid(self)
+    }
+}
+
 extension ObservableType where Element == (CLLocation,CLLocation) {
     func distance() -> Observable<CLLocationDistance>  {
         return map { value in

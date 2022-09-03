@@ -22,7 +22,7 @@ final class AlertViewController: UIViewController {
     
     private let leftButton: UIButton = {
         let btn = UIButton()
-        btn.backgroundColor = .orange
+        btn.backgroundColor = .main
         btn.setTitleColor(.white, for: .normal)
         return btn
     }()
@@ -95,12 +95,16 @@ extension AlertViewController {
     private func setBind() {
         self.rightButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                self?.completion(true)
+                self?.dismiss(animated: true, completion: {
+                    self?.completion(true)
+                })
             }).disposed(by: self.disposeBag)
         
         self.leftButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                self?.completion(false)
+                self?.dismiss(animated: true, completion: {
+                    self?.completion(true)
+                })
             }).disposed(by: self.disposeBag)
     }
     
