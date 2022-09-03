@@ -112,18 +112,45 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="가나다라 마바사 쿠키를 먹어보세요 ㄴ먀냠냠" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rb5-on-Si6">
+                                <rect key="frame" x="20" y="64" width="364" height="64.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ck5-8D-b3h">
+                                <rect key="frame" x="182.5" y="432.5" width="49" height="31"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="쿠키"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ycx-Od-CLf">
+                                <rect key="frame" x="343" y="811" width="51" height="31"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="skip"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bzZ-Ze-yTz"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="ck5-8D-b3h" firstAttribute="centerX" secondItem="DHN-p3-86b" secondAttribute="centerX" id="0wd-nE-hSa"/>
+                            <constraint firstItem="Rb5-on-Si6" firstAttribute="leading" secondItem="bzZ-Ze-yTz" secondAttribute="leading" constant="20" id="3SQ-fI-Txf"/>
                             <constraint firstItem="qyo-T2-ma9" firstAttribute="top" secondItem="DHN-p3-86b" secondAttribute="top" id="5pS-iS-wgm"/>
+                            <constraint firstItem="bzZ-Ze-yTz" firstAttribute="trailing" secondItem="ycx-Od-CLf" secondAttribute="trailing" constant="20" id="A62-Pj-Ebp"/>
                             <constraint firstAttribute="bottom" secondItem="qyo-T2-ma9" secondAttribute="bottom" id="AG7-tJ-dAI"/>
+                            <constraint firstItem="ck5-8D-b3h" firstAttribute="centerY" secondItem="DHN-p3-86b" secondAttribute="centerY" id="Axc-wT-aSO"/>
                             <constraint firstItem="qyo-T2-ma9" firstAttribute="leading" secondItem="bzZ-Ze-yTz" secondAttribute="leading" id="Q9J-Io-8eQ"/>
+                            <constraint firstAttribute="trailing" secondItem="Rb5-on-Si6" secondAttribute="trailing" constant="30" id="k1p-Ti-PZ8"/>
                             <constraint firstItem="bzZ-Ze-yTz" firstAttribute="trailing" secondItem="qyo-T2-ma9" secondAttribute="trailing" id="s3O-ad-xv5"/>
+                            <constraint firstItem="bzZ-Ze-yTz" firstAttribute="bottom" secondItem="ycx-Od-CLf" secondAttribute="bottom" constant="20" id="wRC-Ke-dMo"/>
+                            <constraint firstItem="Rb5-on-Si6" firstAttribute="top" secondItem="bzZ-Ze-yTz" secondAttribute="top" constant="20" id="zCs-3L-qBM"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="backView" destination="qyo-T2-ma9" id="Zf4-CS-n6o"/>
+                        <outlet property="dropCookieButton" destination="ck5-8D-b3h" id="fGc-9a-tpy"/>
+                        <outlet property="skipButton" destination="ycx-Od-CLf" id="IfZ-SM-Rvq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DOq-ug-IQI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -132,6 +159,12 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

@@ -16,7 +16,7 @@ class TransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
     }
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return nil
+        return dismiss
     }
 }
 
@@ -25,7 +25,7 @@ class AnimatorForPresent: NSObject, UIViewControllerAnimatedTransitioning {
     var didPresnet: (()->())?
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.15
+        return 0.7
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -47,21 +47,22 @@ class AnimatorForPresent: NSObject, UIViewControllerAnimatedTransitioning {
 }
 
 class AnimationForDismiss: NSObject, UIViewControllerAnimatedTransitioning {
+    var willDismiss: (()->())?
+    var didDismiss: (()->())?
+    
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 1.0
+        return 0.7
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let dismissingViewController = transitionContext.viewController(forKey: .from) else { return }
         guard let dismissingView = dismissingViewController.view else { return }
-        guard let dimmedView = dismissingView.subviews.filter({ $0.tag == 100 }).first else { return }
-        guard let contentView = dismissingView.subviews.filter({ $0.tag == 200 }).first else { return }
-        
-        dimmedView.alpha = 0
         dismissingViewController.beginAppearanceTransition(true, animated: true)
+        self.willDismiss?()
         
         UIView.animate(withDuration: transitionDuration(using: transitionContext), animations: {
-            contentView.transform = CGAffineTransform(translationX: 0, y: transitionContext.containerView.frame.height)
+            self.didDismiss?()
+            dismissingView.layoutIfNeeded()
         }, completion: { finished in
             dismissingView.removeFromSuperview()
             transitionContext.completeTransition(finished)
