@@ -111,3 +111,4 @@ iOSInjectionProject/
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 # End of https://www.gitignore.io/api/xcode,swift,cocoapods
+Cookies/.DS_Store

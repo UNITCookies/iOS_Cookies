@@ -7,6 +7,7 @@ target 'Cookies' do
     pod 'RxSwift', '6.5.0'
     pod 'RxCocoa', '6.5.0'
     pod 'Alamofire', '5.6.2'
+    pod 'NMapsMap','3.10.0'
 
   # Pods for Cookies
 
