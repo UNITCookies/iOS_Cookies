@@ -50,10 +50,11 @@
                                 <rect key="frame" x="0.0" y="862" width="414" height="34"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fR3-aM-8Dg">
-                                <rect key="frame" x="371.5" y="526.5" width="22.5" height="18"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fR3-aM-8Dg">
+                                <rect key="frame" x="364" y="519" width="30" height="25.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="fR3-aM-8Dg" secondAttribute="height" multiplier="1:1" id="gZe-MI-hkH"/>
+                                    <constraint firstAttribute="height" constant="30" id="ARD-pX-CI0"/>
+                                    <constraint firstAttribute="width" constant="30" id="npG-68-BrI"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
