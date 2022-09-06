@@ -12,8 +12,9 @@ import RxSwift
 import RxCocoa
 import NMapsMap
 import CoreLocation
+import ReactorKit
 
-final class HomeViewController: CKBaseViewController {
+final class HomeViewController: CKBaseViewController, StoryboardView {
     
     @IBOutlet private weak var menuContainerView: UIView!
     @IBOutlet private weak var mapContainerView: UIView!
@@ -23,13 +24,18 @@ final class HomeViewController: CKBaseViewController {
     private let tappedMarker    = BehaviorRelay<NMFOverlay?>(value: nil)
     private let readLetter      = PublishSubject<(String, Int)>()
     
-    private let disposeBag      = DisposeBag()
+    
     private let viewModel       = HomeViewModel(service: APIService())
     private let locationManager = CLLocationManager()
     private let menuView        = BottomMenuView.loadView()
     private let toast           = CookieToast()
     private var marker          = Set<NMFMarker>()
     private lazy var naverMap: NMFMapView = NMFMapView(frame: self.view.frame)
+    var disposeBag = DisposeBag()
+    
+    func bind(reactor: HomeReactor) {
+        self.reactor = reactor
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +89,7 @@ extension HomeViewController {
                                       topRightLng: Double,
                                       bottomLeftLat: Double,
                                       bottomLeftLng: Double)>()
+        
         self.naverMap.rx.mapViewRegionIsChanging
             .debug("[HomeViewController] mapViewRegionIsChanging")
             .subscribe(onNext: { region in
