@@ -4,13 +4,17 @@
 <dict>
 	<key>NMFClientId</key>
 	<string>8fbzcv2xfc</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>사용자의 위치를 쿠키를 남기는데 사용합니다.</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Pretendard-Regular.otf</string>
+		<string>Pretendard-SemiBold.otf</string>
+		<string>Pretendard-Light.otf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -30,11 +34,5 @@
 			</array>
 		</dict>
 	</dict>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Pretendard-Regular.otf</string>
-		<string>Pretendard-SemiBold.otf</string>
-		<string>Pretendard-Light.otf</string>
-	</array>
 </dict>
 </plist>

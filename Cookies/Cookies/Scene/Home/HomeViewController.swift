@@ -92,7 +92,7 @@ extension HomeViewController {
         Observable.combineLatest(self.naverMap.rx.mapViewRegionDidChanging.startWith(0).map { [weak self] _ in return self?.naverMap }
             .unwrap(),
                                  self.userLocation.filter { $0.isValid })
-            .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
+            .debounce(.milliseconds(800), scheduler: MainScheduler.instance)
             .debug("[HomeViewController] mapViewRegionDidChanging")
             .map { (mapView, location) in
                 return (userLat: location.latitude,

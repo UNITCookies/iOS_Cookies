@@ -24,7 +24,7 @@ extension API {
         let bottomRightLat: Double
         let bottomRightLng: Double
     }
-//http://43.200.232.27:8080/letter/write?memberId={memberId}
+    
     struct WriteLetter {
         let content: String
         let lat: Double
