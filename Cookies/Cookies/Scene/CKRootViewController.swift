@@ -8,10 +8,10 @@
 import UIKit
 
 class CKRootViewController: UINavigationController, CookieEmbeddable {
-    var transition: CookiesTransition?
+    var coordinator: CookiesCoordinator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.transition = CookiesTransition(root: self)
+        self.coordinator = CookiesCoordinator(root: self)
     }
 }

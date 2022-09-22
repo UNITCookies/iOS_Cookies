@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,28 +21,46 @@
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="DqE-ud-mxB">
                     <rect key="frame" x="43" y="0.0" width="298" height="114"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0wa-Nw-BB3">
-                            <rect key="frame" x="0.0" y="36" width="38" height="42"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1aI-jf-J8e">
+                            <rect key="frame" x="0.0" y="32" width="50" height="50"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4PR-Qk-f0p">
-                                    <rect key="frame" x="0.0" y="0.0" width="38" height="30"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="30" id="Bdb-of-Lo9"/>
-                                    </constraints>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="0wa-Nw-BB3">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="collect" translatesAutoresizingMaskIntoConstraints="NO" id="0ng-gQ-WRF">
+                                            <rect key="frame" x="7.5" y="0.0" width="35" height="35"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="35" id="HSQ-C9-wQ2"/>
+                                                <constraint firstAttribute="width" constant="35" id="aM4-lB-4Hm"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="모은 쿠키" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zN3-ag-5Gw">
+                                            <rect key="frame" x="6" y="35" width="38" height="15"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7OJ-Zw-RFi">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                    <state key="normal" image="collect"/>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="모은 쿠키" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zN3-ag-5Gw">
-                                    <rect key="frame" x="0.0" y="30" width="38" height="12"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                             </subviews>
-                        </stackView>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="0wa-Nw-BB3" firstAttribute="leading" secondItem="1aI-jf-J8e" secondAttribute="leading" id="0WG-O6-UkU"/>
+                                <constraint firstItem="7OJ-Zw-RFi" firstAttribute="leading" secondItem="1aI-jf-J8e" secondAttribute="leading" id="6fr-3B-blE"/>
+                                <constraint firstAttribute="bottom" secondItem="7OJ-Zw-RFi" secondAttribute="bottom" id="AXa-9N-ccY"/>
+                                <constraint firstAttribute="trailing" secondItem="0wa-Nw-BB3" secondAttribute="trailing" id="QzQ-yd-vRY"/>
+                                <constraint firstAttribute="trailing" secondItem="7OJ-Zw-RFi" secondAttribute="trailing" id="dgT-3R-39f"/>
+                                <constraint firstItem="7OJ-Zw-RFi" firstAttribute="top" secondItem="1aI-jf-J8e" secondAttribute="top" id="h1z-QF-sVr"/>
+                                <constraint firstAttribute="bottom" secondItem="0wa-Nw-BB3" secondAttribute="bottom" id="pzQ-zC-tHc"/>
+                                <constraint firstItem="0wa-Nw-BB3" firstAttribute="top" secondItem="1aI-jf-J8e" secondAttribute="top" id="u7J-ME-T0U"/>
+                            </constraints>
+                        </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qLc-tc-KJS">
-                            <rect key="frame" x="99" y="7" width="100" height="100"/>
+                            <rect key="frame" x="70" y="7" width="100" height="100"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="100" id="F0a-go-wux"/>
@@ -51,26 +69,44 @@
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" image="homeButton"/>
                         </button>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="H35-9L-qD6">
-                            <rect key="frame" x="260" y="33.5" width="38" height="47"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s6R-JK-gX8">
+                            <rect key="frame" x="190" y="0.0" width="108" height="114"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fut-FM-Qa2">
-                                    <rect key="frame" x="1.5" y="0.0" width="35" height="35"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="35" id="rQ5-X0-Vts"/>
-                                    </constraints>
+                                <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="H35-9L-qD6">
+                                    <rect key="frame" x="0.0" y="0.0" width="108" height="114"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baked" translatesAutoresizingMaskIntoConstraints="NO" id="tRU-s6-0Vj">
+                                            <rect key="frame" x="36.5" y="0.0" width="35" height="35"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="35" id="g6l-wC-1vH"/>
+                                                <constraint firstAttribute="width" constant="35" id="jZX-mD-PuM"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="254" verticalHuggingPriority="254" horizontalCompressionResistancePriority="754" verticalCompressionResistancePriority="753" text="만든 쿠키" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohA-3F-VvG">
+                                            <rect key="frame" x="35" y="35" width="38" height="79"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7cQ-4A-PeL">
+                                    <rect key="frame" x="0.0" y="0.0" width="108" height="114"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                    <state key="normal" image="baked"/>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="만든 쿠키" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohA-3F-VvG">
-                                    <rect key="frame" x="0.0" y="35" width="38" height="12"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                             </subviews>
-                        </stackView>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="H35-9L-qD6" firstAttribute="top" secondItem="s6R-JK-gX8" secondAttribute="top" id="0B7-QP-UwN"/>
+                                <constraint firstItem="H35-9L-qD6" firstAttribute="leading" secondItem="s6R-JK-gX8" secondAttribute="leading" id="4ks-XQ-sIE"/>
+                                <constraint firstAttribute="bottom" secondItem="7cQ-4A-PeL" secondAttribute="bottom" id="6S6-mn-mNE"/>
+                                <constraint firstAttribute="bottom" secondItem="H35-9L-qD6" secondAttribute="bottom" id="MzO-aa-odC"/>
+                                <constraint firstItem="7cQ-4A-PeL" firstAttribute="top" secondItem="s6R-JK-gX8" secondAttribute="top" id="SQl-Hg-rB1"/>
+                                <constraint firstAttribute="trailing" secondItem="H35-9L-qD6" secondAttribute="trailing" id="f23-Ml-Xwx"/>
+                                <constraint firstItem="7cQ-4A-PeL" firstAttribute="leading" secondItem="s6R-JK-gX8" secondAttribute="leading" id="y6p-ah-9FY"/>
+                                <constraint firstAttribute="trailing" secondItem="7cQ-4A-PeL" secondAttribute="trailing" id="zY9-ta-EgI"/>
+                            </constraints>
+                        </view>
                     </subviews>
                 </stackView>
             </subviews>
@@ -88,7 +124,9 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="collectedListButton" destination="7OJ-Zw-RFi" id="uIP-UX-mIs"/>
                 <outlet property="containerView" destination="wIY-ui-iaQ" id="mLj-Y6-BNv"/>
+                <outlet property="madeListButton" destination="7cQ-4A-PeL" id="Ceu-8l-5ex"/>
                 <outlet property="writeButton" destination="qLc-tc-KJS" id="KQW-WK-PXS"/>
             </connections>
             <point key="canvasLocation" x="108.69565217391305" y="420.53571428571428"/>

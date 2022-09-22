@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class CookieListViewController: UIViewController {
+class CookieListViewController: CKBaseViewController {
     
     // MARK: - UI components
     

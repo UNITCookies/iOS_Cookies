@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class GuideViewController: UIViewController {
+class GuideViewController: CKBaseViewController {
     private let transitioning = TransitioningDelegate()
     private let disposeBag = DisposeBag()
     

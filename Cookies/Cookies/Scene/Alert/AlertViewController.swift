@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 import SnapKit
 
-final class AlertViewController: UIViewController {
+final class AlertViewController: CKBaseViewController {
     private let transitioning = TransitioningDelegate()
     private let disposeBag = DisposeBag()
     var completion: ((Bool) -> ())!

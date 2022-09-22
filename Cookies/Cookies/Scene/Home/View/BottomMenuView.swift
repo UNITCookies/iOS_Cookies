@@ -13,6 +13,8 @@ final class BottomMenuView: UIView {
     
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet fileprivate weak var writeButton: UIButton!
+    @IBOutlet fileprivate weak var madeListButton: UIButton!
+    @IBOutlet fileprivate weak var collectedListButton: UIButton!
     
     static func loadView() -> BottomMenuView {
         return Bundle.main.loadNibNamed(BottomMenuView.className,
@@ -30,5 +32,15 @@ extension Reactive where Base: BottomMenuView {
     var tappedWrite: ControlEvent<Void> {
         return ControlEvent(events: base
             .writeButton.rx.tap)
+    }
+    
+    var tappedShowMadeList: ControlEvent<Void> {
+        return ControlEvent(events: base
+            .madeListButton.rx.tap)
+    }
+    
+    var tappedShowCollectedList: ControlEvent<Void> {
+        return ControlEvent(events: base
+            .collectedListButton.rx.tap)
     }
 }

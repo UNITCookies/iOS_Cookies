@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class CookiesTransition {
+class CookiesCoordinator {
     let root  : UINavigationController
     private let scene      = BehaviorSubject<CookiesScene>(value: .home)
     private let disposeBag = DisposeBag()
@@ -18,15 +18,27 @@ class CookiesTransition {
         self.root = root
         self.setBind()
     }
+    
+    func execute(to scene: CookiesScene) {
+        self.scene.onNext(scene)
+    }
 }
 
-extension CookiesTransition {
+extension CookiesCoordinator {
     private func setBind() {
         self.scene
             .subscribe(onNext: { [weak self] scene in
+                let vc = scene.viewController
+                vc.coordinator = self
+                
                 switch scene {
                 case .home:
-                    self?.root.setViewControllers([scene.viewController], animated: true)
+                    self?.root.setViewControllers([vc], animated: true)
+                case .madeList:
+                    self?.root.present(vc, animated: true)
+                    
+                case .coollectList:
+                    self?.root.present(vc, animated: true)
                 }
             }).disposed(by: self.disposeBag)
     }
