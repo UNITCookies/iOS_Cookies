@@ -13,7 +13,7 @@ import RxCocoa
 import NMapsMap
 import CoreLocation
 
-final class HomeViewController: UIViewController {
+final class HomeViewController: CKBaseViewController {
     
     @IBOutlet private weak var menuContainerView: UIView!
     @IBOutlet private weak var mapContainerView: UIView!
@@ -146,6 +146,16 @@ extension HomeViewController {
                     self.readLetter.onNext((id, count))
                 }
                 
+            }).disposed(by: self.disposeBag)
+        
+        self.menuView.rx.tappedShowMadeList
+            .subscribe(onNext: { [weak self] in
+                self?.coordinator?.execute(to: .madeList)
+            }).disposed(by: self.disposeBag)
+        
+        self.menuView.rx.tappedShowCollectedList
+            .subscribe(onNext: { [weak self] in
+                self?.coordinator?.execute(to: .coollectList)
             }).disposed(by: self.disposeBag)
         
         let confirmRead = self.readLetter

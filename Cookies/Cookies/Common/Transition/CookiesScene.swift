@@ -9,6 +9,8 @@ import UIKit
 
 enum CookiesScene {
     case home
+    case madeList
+    case coollectList
 }
 
 extension CookiesScene {
@@ -16,10 +18,16 @@ extension CookiesScene {
         self = scene
     }
     
-    var viewController: UIViewController {
+    var viewController: CKBaseViewController {
         switch self {
         case .home:
             let vc: HomeViewController = HomeViewController.createInstance(())
+            return vc
+        case .madeList:
+            let vc: CookieListViewController = CookieListViewController()
+            return vc
+        case .coollectList:
+            let vc: CookieListViewController = CookieListViewController()
             return vc
         }
     }
