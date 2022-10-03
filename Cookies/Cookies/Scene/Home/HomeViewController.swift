@@ -24,7 +24,6 @@ final class HomeViewController: CKBaseViewController, StoryboardView {
     private let tappedMarker    = BehaviorRelay<NMFOverlay?>(value: nil)
     private let readLetter      = PublishSubject<(String, Int)>()
     
-    
     private let viewModel       = HomeViewModel(service: APIService())
     private let locationManager = CLLocationManager()
     private let menuView        = BottomMenuView.loadView()
@@ -34,7 +33,28 @@ final class HomeViewController: CKBaseViewController, StoryboardView {
     var disposeBag = DisposeBag()
     
     func bind(reactor: HomeReactor) {
-        self.reactor = reactor
+        let changedRegion = self.naverMap.rx.mapViewRegionDidChanging
+            .startWith(0)
+            .map { [weak self] _ in return self?.naverMap }
+            .unwrap()
+        
+        self.naverMap.rx.mapViewRegionDidChanging
+            .debug("jhh change")
+            .subscribe(onNext: { _ in
+                
+            }).disposed(by: self.disposeBag)
+        
+        Observable.combineLatest(changedRegion,
+                                 self.userLocation.filter { $0.isValid })
+        .debounce(.milliseconds(600), scheduler: MainScheduler.instance)
+        .debug("[HomeViewController] mapViewRegionDidChanging")
+        .map { (mapView, location) in
+            return HomeReactor.Action.moveMap(userLat: location.latitude,
+                                              userLng: location.longitude,
+                                              mapBounds: mapView.contentBounds)
+        }
+        .bind(to: reactor.action)
+        .disposed(by: self.disposeBag)
     }
     
     override func viewDidLoad() {
@@ -42,7 +62,7 @@ final class HomeViewController: CKBaseViewController, StoryboardView {
         self.locationManagerInit()
         self.setViews()
         self.presentGuideView()
-        self.setBind()
+        self.setUIBind()
     }
 }
 
@@ -50,11 +70,8 @@ extension HomeViewController {
     private func locationManagerInit() {
         self.locationManager.requestAlwaysAuthorization()
         self.locationManager.requestWhenInUseAuthorization()
-
-        if CLLocationManager.locationServicesEnabled() {
-            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            self.locationManager.startUpdatingLocation()
-        }
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.startUpdatingLocation()
         
         self.naverMap.positionMode = .direction
     }
@@ -81,7 +98,7 @@ extension HomeViewController {
 }
 
 extension HomeViewController {
-    private func setBind() {
+    private func setUIBind() {
         let writeLetter = PublishSubject<(content: String, lat: Double, lng: Double)>()
         let moveMap = PublishSubject<(userLat: Double,
                                       userLng: Double,
@@ -96,27 +113,21 @@ extension HomeViewController {
             
         }).disposed(by: self.disposeBag)
         
-        Observable.combineLatest(self.naverMap.rx.mapViewRegionDidChanging.startWith(0).map { [weak self] _ in return self?.naverMap }
-            .unwrap(),
-                                 self.userLocation.filter { $0.isValid })
-            .debounce(.milliseconds(800), scheduler: MainScheduler.instance)
-            .debug("[HomeViewController] mapViewRegionDidChanging")
-            .map { (mapView, location) in
-                return (userLat: location.latitude,
-                        userLng: location.longitude,
-                        topRightLat: mapView.contentBounds.northEastLat,
-                        topRightLng: mapView.contentBounds.northEastLng,
-                        bottomLeftLat: mapView.contentBounds.southWestLat,
-                        bottomLeftLng: mapView.contentBounds.southWestLng)
-//                return (userLat: 37.4952339,
-//                        userLng: 127.0382079,
-//                        topRightLat: 37.4882018,
-//                        topRightLng: 127.0314238,
-//                        bottomLeftLat: 37.5035999,
-//                        bottomLeftLng: 127.0486473)
-            }
-            .bind(to: moveMap)
-            .disposed(by: self.disposeBag)
+//        Observable.combineLatest(self.naverMap.rx.mapViewRegionDidChanging.startWith(0).map { [weak self] _ in return self?.naverMap }
+//            .unwrap(),
+//                                 self.userLocation.filter { $0.isValid })
+//            .debounce(.milliseconds(800), scheduler: MainScheduler.instance)
+//            .debug("[HomeViewController] mapViewRegionDidChanging")
+//            .map { (mapView, location) in
+//                return (userLat: location.latitude,
+//                        userLng: location.longitude,
+//                        topRightLat: mapView.contentBounds.northEastLat,
+//                        topRightLng: mapView.contentBounds.northEastLng,
+//                        bottomLeftLat: mapView.contentBounds.southWestLat,
+//                        bottomLeftLng: mapView.contentBounds.southWestLng)
+//            }
+//            .bind(to: moveMap)
+//            .disposed(by: self.disposeBag)
         
         self.naverMap.rx.didTapMapView
             .debug("[HomeViewController] didTapMapView")
@@ -198,78 +209,78 @@ extension HomeViewController {
             .bind(to: writeLetter)
             .disposed(by: self.disposeBag)
         
-        let input = HomeViewModel.Input(readLetter: confirmRead.asObservable(),
-                                        moveMap: moveMap.asObservable(),
-                                        write: writeLetter.asObservable()
-        )
-        let output = self.viewModel.transform(input: input)
-        
-        output.pins
-            .debug("pins")
-            .subscribe(onNext: { [weak self] pins in
-                guard let self = self else { return }
-                self.marker.forEach { marker in
-                    marker.mapView = nil
-                }
-                
-                pins.disablePin.forEach { cookie in
-                    let marker = NMFMarker()
-                    marker.position = NMGLatLng(lat: cookie.lat, lng: cookie.lng)
-                    marker.mapView = self.naverMap
-                    marker.iconImage = NMFOverlayImage(image: UIImage(named: "disablePin")!)
-                    marker.userInfo = ["isAble": false,
-                                       "id": cookie.id,
-                                       "count": cookie.enableCount
-                    ]
-                    self.marker.insert(marker)
-                }
-                
-                pins.enablePin.forEach { cookie in
-                    let marker = NMFMarker()
-                    marker.position = NMGLatLng(lat: cookie.lat, lng: cookie.lng)
-                    marker.mapView = self.naverMap
-                    marker.iconImage = NMFOverlayImage(image: UIImage(named: "unSelectPin")!)
-                    marker.userInfo = ["isAble": true,
-                                       "id": cookie.id,
-                                       "count": cookie.enableCount]
-                    marker.touchHandler = { [weak self] overlay in
-                        self?.tappedMarker.accept(overlay)
-                        return true
-                    }
-                    
-                    self.marker.insert(marker)
-                }
-            }).disposed(by: self.disposeBag)
-        
-        output.detailLetter
-            .debug("[HomeViewController] detailLetter")
-            .flatMapLatest({ [weak self] letter -> Observable<Void> in
-                guard let self = self else { return .empty() }
-                let writeView = WriteView.loadView()
-                writeView.isRead(name: letter.nickname,
-                                 content: letter.content,
-                                 enableCount: letter.enableCount)
-                
-                return AlertViewController.createInstance((contentView: writeView,
-                                                           leftButtonTitle: nil,
-                                                           rightButtonTitle: "쿠키 줍줍 완료!"))
-                    .getStream(WithPresenter: self, presentationStyle: .overCurrentContext)
-                    .mapToVoid()
-            })
-            .subscribe(onNext: { [weak self] in
-                self?.marker.filter { $0.userInfo["isAble"] as! Bool }.forEach { marker in
-                    marker.iconImage = NMFOverlayImage(image: UIImage(named: "unSelectPin")!)
-                }
-            }).disposed(by: self.disposeBag)
-        
-        output.isWrite
-            .debug("[HomeViewController] isWrite")
-            .subscribe(onNext: { [weak self] isSuccess in
-                if isSuccess {
-                    self?.toast.show(title: "쿠키를 남겼습니다.",
-                                     explain: "한시간 후 다른 유저에게 발견됩니다")
-                }
-            }).disposed(by: self.disposeBag)
+//        let input = HomeViewModel.Input(readLetter: confirmRead.asObservable(),
+//                                        moveMap: moveMap.asObservable(),
+//                                        write: writeLetter.asObservable()
+//        )
+//        let output = self.viewModel.transform(input: input)
+//
+//        output.pins
+//            .debug("pins")
+//            .subscribe(onNext: { [weak self] pins in
+//                guard let self = self else { return }
+//                self.marker.forEach { marker in
+//                    marker.mapView = nil
+//                }
+//
+//                pins.disablePin.forEach { cookie in
+//                    let marker = NMFMarker()
+//                    marker.position = NMGLatLng(lat: cookie.lat, lng: cookie.lng)
+//                    marker.mapView = self.naverMap
+//                    marker.iconImage = NMFOverlayImage(image: UIImage(named: "disablePin")!)
+//                    marker.userInfo = ["isAble": false,
+//                                       "id": cookie.id,
+//                                       "count": cookie.enableCount
+//                    ]
+//                    self.marker.insert(marker)
+//                }
+//
+//                pins.enablePin.forEach { cookie in
+//                    let marker = NMFMarker()
+//                    marker.position = NMGLatLng(lat: cookie.lat, lng: cookie.lng)
+//                    marker.mapView = self.naverMap
+//                    marker.iconImage = NMFOverlayImage(image: UIImage(named: "unSelectPin")!)
+//                    marker.userInfo = ["isAble": true,
+//                                       "id": cookie.id,
+//                                       "count": cookie.enableCount]
+//                    marker.touchHandler = { [weak self] overlay in
+//                        self?.tappedMarker.accept(overlay)
+//                        return true
+//                    }
+//
+//                    self.marker.insert(marker)
+//                }
+//            }).disposed(by: self.disposeBag)
+//
+//        output.detailLetter
+//            .debug("[HomeViewController] detailLetter")
+//            .flatMapLatest({ [weak self] letter -> Observable<Void> in
+//                guard let self = self else { return .empty() }
+//                let writeView = WriteView.loadView()
+//                writeView.isRead(name: letter.nickname,
+//                                 content: letter.content,
+//                                 enableCount: letter.enableCount)
+//
+//                return AlertViewController.createInstance((contentView: writeView,
+//                                                           leftButtonTitle: nil,
+//                                                           rightButtonTitle: "쿠키 줍줍 완료!"))
+//                    .getStream(WithPresenter: self, presentationStyle: .overCurrentContext)
+//                    .mapToVoid()
+//            })
+//            .subscribe(onNext: { [weak self] in
+//                self?.marker.filter { $0.userInfo["isAble"] as! Bool }.forEach { marker in
+//                    marker.iconImage = NMFOverlayImage(image: UIImage(named: "unSelectPin")!)
+//                }
+//            }).disposed(by: self.disposeBag)
+//
+//        output.isWrite
+//            .debug("[HomeViewController] isWrite")
+//            .subscribe(onNext: { [weak self] isSuccess in
+//                if isSuccess {
+//                    self?.toast.show(title: "쿠키를 남겼습니다.",
+//                                     explain: "한시간 후 다른 유저에게 발견됩니다")
+//                }
+//            }).disposed(by: self.disposeBag)
     }
 }
 

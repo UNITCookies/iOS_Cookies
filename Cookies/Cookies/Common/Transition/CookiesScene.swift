@@ -22,6 +22,8 @@ extension CookiesScene {
         switch self {
         case .home:
             let vc: HomeViewController = HomeViewController.createInstance(())
+            vc.reactor = HomeReactor(service: APIService())
+            
             return vc
         case .madeList:
             let vc: CookieListViewController = CookieListViewController()
