@@ -6,14 +6,6 @@
 //
 
 import RxSwift
-/*
-userLat: Double,
-              userLng: Double,
-              topLeftLat: Double,
-              topLeftLng: Double,
-              bottomRightLat: Double,
-              bottomRightLng: Double
- */
 
 class HomeViewModel {
     private let service: APIServiceProtocol
@@ -58,6 +50,7 @@ extension HomeViewModel {
                                              bottomLeftLat: params.bottomLeftLat,
                                              bottomLeftLng: params.bottomLeftLng)
             }
+            .debug("[HomeViewModel] fetchPin")
         
         let write = input.write
             .flatMapLatest { [weak self] letter -> Observable<Bool> in
