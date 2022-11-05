@@ -14,8 +14,31 @@ import NMapsMap
 import CoreLocation
 import ReactorKit
 
-final class HomeViewController: CKBaseViewController, StoryboardView {
+protocol HomeViewControllerDelegate {
+    func showMadeList()
+    func showCollectList()
+}
+
+final class HomeContainerViewController: UINavigationController, CookieEmbeddable, VCFactorable{
+    @IBOutlet weak var tabBar: UIView!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let homeVC = HomeViewController.createInstance(())
+        homeVC.reactor = HomeReactor(service: APIService())
+        self.show(homeVC)
+        self.view.bringSubviewToFront(self.tabBar)
+    }
+    
+    public static var storyboardIdentifier = "Main"
+    public static var vcIdentifier = "HomeContainerViewController"
+    public func bindData(value: ()) {
+        
+    }
+}
+
+final class HomeViewController: CKBaseViewController, StoryboardView {
+    var delegate: HomeViewControllerDelegate?
     @IBOutlet private weak var menuContainerView: UIView!
     @IBOutlet private weak var mapContainerView: UIView!
     
@@ -61,7 +84,6 @@ final class HomeViewController: CKBaseViewController, StoryboardView {
         super.viewDidLoad()
         self.locationManagerInit()
         self.setViews()
-        self.presentGuideView()
         self.setUIBind()
     }
 }
@@ -86,14 +108,6 @@ extension HomeViewController {
         self.menuContainerView.addSubview(self.menuView)
         self.mapContainerView.addSubview(self.naverMap)
         self.menuView.fillSuperview()
-    }
-    
-    private func presentGuideView() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) { [weak self] in
-            guard let self = self else { return }
-            let guideView = GuideViewController.createInstance(self.guideDismiss)
-            self.present(guideView, animated: true)
-        }
     }
 }
 
@@ -138,12 +152,6 @@ extension HomeViewController {
                 }
         }).disposed(by: self.disposeBag)
         
-        self.guideDismiss
-            .debug("[HomeViewController] guideDismiss")
-            .subscribe(onNext: { message in
-            
-        }).disposed(by: self.disposeBag)
-        
         self.locationManager.rx.updateLocations
             .map{ $0.coordinate }
             .debug("[HomeViewController] updateLocations")
@@ -167,14 +175,16 @@ extension HomeViewController {
             }).disposed(by: self.disposeBag)
         
         self.menuView.rx.tappedShowMadeList
-            .subscribe(onNext: { [weak self] in
-                self?.coordinator?.execute(to: .madeList)
-            }).disposed(by: self.disposeBag)
+            .subscribe(with: self) { owner, _ in
+                owner.delegate?.showMadeList()
+            }
+            .disposed(by: self.disposeBag)
         
         self.menuView.rx.tappedShowCollectedList
-            .subscribe(onNext: { [weak self] in
-                self?.coordinator?.execute(to: .coollectList)
-            }).disposed(by: self.disposeBag)
+            .subscribe(with: self) { owner, _ in
+                owner.delegate?.showCollectList()
+            }
+            .disposed(by: self.disposeBag)
         
         let confirmRead = self.readLetter
             .flatMapLatest { [weak self] letter -> Observable<String> in

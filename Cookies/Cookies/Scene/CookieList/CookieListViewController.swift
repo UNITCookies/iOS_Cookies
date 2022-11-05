@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 
 class CookieListViewController: CKBaseViewController {
-    
     // MARK: - UI components
     
     private let cookieListTableView = UITableView()

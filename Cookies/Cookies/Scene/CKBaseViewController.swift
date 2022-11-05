@@ -8,8 +8,8 @@
 import UIKit
 
 class CKBaseViewController: UIViewController {
-    weak var coordinator: CookiesCoordinator?
-    
+    weak var coordinator: (any Coordinatorable)?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
