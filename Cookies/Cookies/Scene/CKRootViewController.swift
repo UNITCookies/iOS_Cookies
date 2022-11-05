@@ -14,9 +14,10 @@ protocol CKRootViewControllerCoordinatorDelegate: AnyObject {
     func didTapMadeList()
 }
 
-class CKRootViewController: UIViewController, CookieEmbeddable, RootContainerable {
+final class CKRootViewController: UIViewController, CookieEmbeddable, RootContainerable {
     
-    @IBOutlet weak var tabBar: UIView!
+    @IBOutlet private weak var tabBarBottomView: UIView!
+    @IBOutlet private weak var tabBar: UIView!
     var coordinator: RootCoordinator?
     weak var delegate: CKRootViewControllerCoordinatorDelegate?
     
@@ -40,6 +41,7 @@ class CKRootViewController: UIViewController, CookieEmbeddable, RootContainerabl
     }
     
     private func setupUI () {
+        self.view.bringSubviewToFront(self.tabBarBottomView)
         self.view.bringSubviewToFront(self.tabBar)
         self.tabBar.addSubview(self.menuView)
         self.menuView.fillSuperview()
@@ -58,7 +60,7 @@ class CKRootViewController: UIViewController, CookieEmbeddable, RootContainerabl
             }
             .disposed(by: self.disposeBag)
         
-        let tappedWrite = self.menuView.rx.tappedWrite
+        self.menuView.rx.tappedWrite
             .flatMapLatest { [weak self] _ -> Observable<String> in
                 guard let self = self else { return .empty() }
                 let messageView = WriteView.loadView()
@@ -68,7 +70,9 @@ class CKRootViewController: UIViewController, CookieEmbeddable, RootContainerabl
                     .getStream(WithPresenter: self, presentationStyle: .overCurrentContext)
                     .filter { $0 }
                     .map { _ in messageView.message }
-            }
+            }.subscribe(onNext: { _ in
+                
+            }).disposed(by: self.disposeBag)
     }
 }
 

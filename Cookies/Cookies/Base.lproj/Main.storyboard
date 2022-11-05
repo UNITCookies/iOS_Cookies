@@ -56,26 +56,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="374" placeholderIntrinsicHeight="50" translatesAutoresizingMaskIntoConstraints="NO" id="Pcl-3y-9if">
-                                <rect key="frame" x="20" y="792" width="374" height="50"/>
+                                <rect key="frame" x="0.0" y="812" width="414" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xsV-P5-udx">
+                                <rect key="frame" x="0.0" y="862" width="414" height="34"/>
+                                <color key="backgroundColor" red="0.14117647058823529" green="0.14117647058823529" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="K8a-Nn-amV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="K8a-Nn-amV" firstAttribute="trailing" secondItem="Pcl-3y-9if" secondAttribute="trailing" constant="20" id="chD-Qb-Tqy"/>
+                            <constraint firstAttribute="bottom" secondItem="xsV-P5-udx" secondAttribute="bottom" id="ULJ-3L-bIF"/>
+                            <constraint firstItem="xsV-P5-udx" firstAttribute="top" secondItem="K8a-Nn-amV" secondAttribute="bottom" id="WZM-17-cAY"/>
+                            <constraint firstItem="K8a-Nn-amV" firstAttribute="trailing" secondItem="Pcl-3y-9if" secondAttribute="trailing" id="chD-Qb-Tqy"/>
                             <constraint firstItem="Pcl-3y-9if" firstAttribute="centerX" secondItem="mbb-tS-JvQ" secondAttribute="centerX" id="hhV-uS-EEQ"/>
-                            <constraint firstItem="Pcl-3y-9if" firstAttribute="leading" secondItem="K8a-Nn-amV" secondAttribute="leading" constant="20" id="jze-uf-cVJ"/>
-                            <constraint firstItem="K8a-Nn-amV" firstAttribute="bottom" secondItem="Pcl-3y-9if" secondAttribute="bottom" constant="20" id="lfa-DI-ASA"/>
+                            <constraint firstItem="Pcl-3y-9if" firstAttribute="leading" secondItem="K8a-Nn-amV" secondAttribute="leading" id="jze-uf-cVJ"/>
+                            <constraint firstItem="K8a-Nn-amV" firstAttribute="trailing" secondItem="xsV-P5-udx" secondAttribute="trailing" id="ltR-hX-CO2"/>
+                            <constraint firstItem="xsV-P5-udx" firstAttribute="top" secondItem="Pcl-3y-9if" secondAttribute="bottom" id="oqr-uM-NNQ"/>
+                            <constraint firstItem="xsV-P5-udx" firstAttribute="leading" secondItem="K8a-Nn-amV" secondAttribute="leading" id="wl5-5I-h80"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="tabBar" destination="Pcl-3y-9if" id="Gp0-XU-ErQ"/>
+                        <outlet property="tabBarBottomView" destination="xsV-P5-udx" id="nh7-9t-SxB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I4G-BR-LBf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-233" y="88"/>
+            <point key="canvasLocation" x="-233.33333333333334" y="87.723214285714278"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="R1c-PY-poZ">
@@ -90,7 +99,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="jES-tg-0Uh">
-                                <rect key="frame" x="348" y="544" width="46" height="140"/>
+                                <rect key="frame" x="348" y="644" width="46" height="140"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i6v-Ps-l8b">
                                         <rect key="frame" x="0.0" y="0.0" width="46" height="74"/>
@@ -108,7 +117,7 @@
                         <viewLayoutGuide key="safeArea" id="9AH-e6-mc9"/>
                         <color key="backgroundColor" systemColor="systemPinkColor"/>
                         <constraints>
-                            <constraint firstItem="9AH-e6-mc9" firstAttribute="bottom" secondItem="jES-tg-0Uh" secondAttribute="bottom" constant="178" id="712-8n-1HV"/>
+                            <constraint firstItem="9AH-e6-mc9" firstAttribute="bottom" secondItem="jES-tg-0Uh" secondAttribute="bottom" constant="78" id="712-8n-1HV"/>
                             <constraint firstAttribute="bottom" secondItem="RHC-ow-ZxF" secondAttribute="bottom" id="Mk9-cp-Ki3"/>
                             <constraint firstItem="RHC-ow-ZxF" firstAttribute="top" secondItem="tpk-PC-ZH5" secondAttribute="top" id="NT7-gP-blH"/>
                             <constraint firstItem="9AH-e6-mc9" firstAttribute="trailing" secondItem="RHC-ow-ZxF" secondAttribute="trailing" id="Yhq-cd-ZgN"/>
