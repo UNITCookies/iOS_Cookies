@@ -55,21 +55,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pcl-3y-9if">
-                                <rect key="frame" x="10" y="812" width="394" height="50"/>
-                                <color key="backgroundColor" systemColor="systemRedColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="DiF-EA-yyS"/>
-                                </constraints>
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="374" placeholderIntrinsicHeight="50" translatesAutoresizingMaskIntoConstraints="NO" id="Pcl-3y-9if">
+                                <rect key="frame" x="20" y="792" width="374" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="K8a-Nn-amV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="K8a-Nn-amV" firstAttribute="trailing" secondItem="Pcl-3y-9if" secondAttribute="trailing" constant="10" id="chD-Qb-Tqy"/>
+                            <constraint firstItem="K8a-Nn-amV" firstAttribute="trailing" secondItem="Pcl-3y-9if" secondAttribute="trailing" constant="20" id="chD-Qb-Tqy"/>
                             <constraint firstItem="Pcl-3y-9if" firstAttribute="centerX" secondItem="mbb-tS-JvQ" secondAttribute="centerX" id="hhV-uS-EEQ"/>
-                            <constraint firstItem="Pcl-3y-9if" firstAttribute="leading" secondItem="K8a-Nn-amV" secondAttribute="leading" constant="10" id="jze-uf-cVJ"/>
-                            <constraint firstItem="Pcl-3y-9if" firstAttribute="bottom" secondItem="K8a-Nn-amV" secondAttribute="bottom" id="lfa-DI-ASA"/>
+                            <constraint firstItem="Pcl-3y-9if" firstAttribute="leading" secondItem="K8a-Nn-amV" secondAttribute="leading" constant="20" id="jze-uf-cVJ"/>
+                            <constraint firstItem="K8a-Nn-amV" firstAttribute="bottom" secondItem="Pcl-3y-9if" secondAttribute="bottom" constant="20" id="lfa-DI-ASA"/>
                         </constraints>
                     </view>
                     <connections>
@@ -92,10 +89,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="374" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="72a-BY-HWK">
-                                <rect key="frame" x="20" y="704" width="374" height="128"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="jES-tg-0Uh">
                                 <rect key="frame" x="348" y="544" width="46" height="140"/>
                                 <subviews>
@@ -115,20 +108,16 @@
                         <viewLayoutGuide key="safeArea" id="9AH-e6-mc9"/>
                         <color key="backgroundColor" systemColor="systemPinkColor"/>
                         <constraints>
-                            <constraint firstItem="72a-BY-HWK" firstAttribute="top" secondItem="jES-tg-0Uh" secondAttribute="bottom" constant="20" id="AI8-cN-9uO"/>
+                            <constraint firstItem="9AH-e6-mc9" firstAttribute="bottom" secondItem="jES-tg-0Uh" secondAttribute="bottom" constant="178" id="712-8n-1HV"/>
                             <constraint firstAttribute="bottom" secondItem="RHC-ow-ZxF" secondAttribute="bottom" id="Mk9-cp-Ki3"/>
                             <constraint firstItem="RHC-ow-ZxF" firstAttribute="top" secondItem="tpk-PC-ZH5" secondAttribute="top" id="NT7-gP-blH"/>
                             <constraint firstItem="9AH-e6-mc9" firstAttribute="trailing" secondItem="RHC-ow-ZxF" secondAttribute="trailing" id="Yhq-cd-ZgN"/>
-                            <constraint firstItem="9AH-e6-mc9" firstAttribute="trailing" secondItem="72a-BY-HWK" secondAttribute="trailing" constant="20" id="ZSH-Y9-gta"/>
-                            <constraint firstItem="72a-BY-HWK" firstAttribute="leading" secondItem="9AH-e6-mc9" secondAttribute="leading" constant="20" id="aeP-W0-84A"/>
                             <constraint firstItem="9AH-e6-mc9" firstAttribute="trailing" secondItem="jES-tg-0Uh" secondAttribute="trailing" constant="20" id="pLb-eK-DdK"/>
                             <constraint firstItem="RHC-ow-ZxF" firstAttribute="leading" secondItem="9AH-e6-mc9" secondAttribute="leading" id="uXU-vP-mV5"/>
-                            <constraint firstItem="9AH-e6-mc9" firstAttribute="bottom" secondItem="72a-BY-HWK" secondAttribute="bottom" constant="30" id="zEM-9g-lp5"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="mapContainerView" destination="RHC-ow-ZxF" id="sME-aN-2xY"/>
-                        <outlet property="menuContainerView" destination="72a-BY-HWK" id="bco-6D-iGW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S5Z-PZ-lTl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -230,9 +219,6 @@
         </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

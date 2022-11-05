@@ -19,27 +19,8 @@ protocol HomeViewControllerDelegate {
     func showCollectList()
 }
 
-final class HomeContainerViewController: UINavigationController, CookieEmbeddable, VCFactorable{
-    @IBOutlet weak var tabBar: UIView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let homeVC = HomeViewController.createInstance(())
-        homeVC.reactor = HomeReactor(service: APIService())
-        self.show(homeVC)
-        self.view.bringSubviewToFront(self.tabBar)
-    }
-    
-    public static var storyboardIdentifier = "Main"
-    public static var vcIdentifier = "HomeContainerViewController"
-    public func bindData(value: ()) {
-        
-    }
-}
-
 final class HomeViewController: CKBaseViewController, StoryboardView {
     var delegate: HomeViewControllerDelegate?
-    @IBOutlet private weak var menuContainerView: UIView!
     @IBOutlet private weak var mapContainerView: UIView!
     
     private let userLocation    = BehaviorSubject<CLLocationCoordinate2D>(value: CLLocationCoordinate2D())
@@ -49,7 +30,6 @@ final class HomeViewController: CKBaseViewController, StoryboardView {
     
     private let viewModel       = HomeViewModel(service: APIService())
     private let locationManager = CLLocationManager()
-    private let menuView        = BottomMenuView.loadView()
     private let toast           = CookieToast()
     private var marker          = Set<NMFMarker>()
     private lazy var naverMap: NMFMapView = NMFMapView(frame: self.view.frame)
@@ -105,9 +85,7 @@ extension HomeViewController {
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(100)
         }
-        self.menuContainerView.addSubview(self.menuView)
         self.mapContainerView.addSubview(self.naverMap)
-        self.menuView.fillSuperview()
     }
 }
 
@@ -174,17 +152,6 @@ extension HomeViewController {
                 
             }).disposed(by: self.disposeBag)
         
-        self.menuView.rx.tappedShowMadeList
-            .subscribe(with: self) { owner, _ in
-                owner.delegate?.showMadeList()
-            }
-            .disposed(by: self.disposeBag)
-        
-        self.menuView.rx.tappedShowCollectedList
-            .subscribe(with: self) { owner, _ in
-                owner.delegate?.showCollectList()
-            }
-            .disposed(by: self.disposeBag)
         
         let confirmRead = self.readLetter
             .flatMapLatest { [weak self] letter -> Observable<String> in
@@ -199,25 +166,14 @@ extension HomeViewController {
                 .map { _ in letter.0 }
             }
         
-        let tappedWrite = self.menuView.rx.tappedWrite
-            .flatMapLatest { [weak self] _ -> Observable<String> in
-                guard let self = self else { return .empty() }
-                let messageView = WriteView.loadView()
-                return AlertViewController.createInstance((contentView: messageView,
-                                                           leftButtonTitle: nil,
-                                                           rightButtonTitle: "쿠키 작성 완료"))
-                    .getStream(WithPresenter: self, presentationStyle: .overCurrentContext)
-                    .filter { $0 }
-                    .map { _ in messageView.message }
-            }
         
-        Observable.merge(tappedWrite, self.guideDismiss)
-            .withLatestFrom(self.userLocation) { ($0,$1) }
-            .map { (message, loc) in
-                return (content: message, lat: loc.latitude, lng: loc.longitude)
-            }
-            .bind(to: writeLetter)
-            .disposed(by: self.disposeBag)
+//        Observable.merge(tappedWrite, self.guideDismiss)
+//            .withLatestFrom(self.userLocation) { ($0,$1) }
+//            .map { (message, loc) in
+//                return (content: message, lat: loc.latitude, lng: loc.longitude)
+//            }
+//            .bind(to: writeLetter)
+//            .disposed(by: self.disposeBag)
         
 //        let input = HomeViewModel.Input(readLetter: confirmRead.asObservable(),
 //                                        moveMap: moveMap.asObservable(),

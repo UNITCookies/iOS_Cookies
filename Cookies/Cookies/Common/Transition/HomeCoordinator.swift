@@ -55,8 +55,8 @@ extension HomeCoordinator {
         self.scene
             .subscribe(with: self) { owner, scene in
                 switch scene {
-                case .home:
-                    let vc = HomeContainerViewController.createInstance(())
+                case .home: break
+//                    let vc = HomeContainerViewController.createInstance(())
 //                    owner.root.setViewControllers([vc], animated: true)
 //                    owner.root.present(scene.viewController, animated: false)
                 case .madeList: break

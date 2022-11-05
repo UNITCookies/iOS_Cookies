@@ -15,6 +15,8 @@ struct Scene {
     enum Root: Sceneable {
         case home
         case guide
+        case madeList
+        case collectList
         
         var viewController: CKBaseViewController {
             switch self {
@@ -25,6 +27,10 @@ struct Scene {
             case .guide:
                 let vc: GuideViewController = GuideViewController.createInstance(())
                 return vc
+            case .madeList:
+                return CookieListViewController()
+            case .collectList:
+                return CookieListViewController()
             }
         }
     }
@@ -42,6 +48,7 @@ class RootCoordinator: Coordinatorable {
     }
     
     func start() {
+        (self.root as? CKRootViewController)?.delegate = self
         self.execute(to: .home)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
             self.execute(to: .guide)
@@ -58,7 +65,6 @@ extension RootCoordinator {
         self.scene
             .subscribe(with: self, onNext: { owner, scene in
                 let vc = scene.viewController
-                
                 switch scene {
                 case .home:
                     owner.root.naviViewController?.setViewControllers([vc], animated: true)
@@ -66,8 +72,23 @@ extension RootCoordinator {
                     guard let vc = vc as? GuideViewController else { return }
                     vc.delegate = self
                     owner.root.present(vc, animated: true)
+                case .collectList:
+                    owner.root.naviViewController?.pushViewController(vc, animated: true)
+                case .madeList:
+                    owner.root.naviViewController?.pushViewController(vc, animated: true)
+                    
                 }
             }).disposed(by: self.disposeBag)
+    }
+}
+
+extension RootCoordinator: CKRootViewControllerCoordinatorDelegate {
+    func didTapMadeList() {
+        self.execute(to: .madeList)
+    }
+    
+    func didTapCollectList() {
+        self.execute(to: .collectList)
     }
 }
 
