@@ -63,6 +63,7 @@ class RootCoordinator: Coordinatorable {
 extension RootCoordinator {
     private func setBind() {
         self.scene
+            .distinctUntilChanged()
             .subscribe(with: self, onNext: { owner, scene in
                 let vc = scene.viewController
                 switch scene {
@@ -73,8 +74,10 @@ extension RootCoordinator {
                     vc.delegate = self
                     owner.root.present(vc, animated: true)
                 case .collectList:
+                    (owner.root as? CKRootViewController)?.animateBottomButton(false)
                     owner.root.naviViewController?.pushViewController(vc, animated: true)
                 case .madeList:
+                    (owner.root as? CKRootViewController)?.animateBottomButton(false)
                     owner.root.naviViewController?.pushViewController(vc, animated: true)
                     
                 }

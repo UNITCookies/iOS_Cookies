@@ -74,6 +74,10 @@ final class CKRootViewController: UIViewController, CookieEmbeddable, RootContai
                 
             }).disposed(by: self.disposeBag)
     }
+    
+    func animateBottomButton(_ selectedHome: Bool) {
+        self.menuView.animateButtons(selectedHome)
+    }
 }
 
 extension CKRootViewController: VCFactorable {

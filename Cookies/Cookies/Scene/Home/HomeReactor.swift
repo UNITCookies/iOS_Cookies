@@ -10,15 +10,18 @@ import NMapsMap.NMFMapView
 
 class HomeReactor: Reactor {
     private let service: APIServiceProtocol
+    private let locationManager = CLLocationManager()
     
     init (service: APIServiceProtocol) {
         self.service = service
+        self.locationManagerInit()
     }
     
     enum Action {
-        case moveMap(userLat: Double,
-                     userLng: Double,
-                     mapBounds: NMGLatLngBounds)
+        case moveMap(mapBounds: NMGLatLngBounds)
+        case fetchPins(userLat: Double,
+                       userLng: Double,
+                       mapBounds: NMGLatLngBounds)
         case readLetter(id: String)
         case writeLetter(content: String,
                          lat: Double,
@@ -41,19 +44,25 @@ class HomeReactor: Reactor {
     
     let initialState: State = State()
     
+    private func locationManagerInit() {
+        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.startUpdatingLocation()
+    }
+    
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        case .moveMap(let userLat,
-                      let userLng,
-                      let mapBounds):
-            return self.service.fetchPin(userLat: userLat,
-                                         userLng: userLng,
-                                         topRightLat: mapBounds.northEastLat,
-                                         topRightLng: mapBounds.northEastLng,
-                                         bottomLeftLat: mapBounds.southWestLat,
-                                         bottomLeftLng: mapBounds.southWestLng)
-            .map { .setPin($0) }
-            .debug("[HomeReactor] fetchPin")
+        case .moveMap(let mapBounds):
+            return .empty()
+//            return self.service.fetchPin(userLat: userLat,
+//                                         userLng: userLng,
+//                                         topRightLat: mapBounds.northEastLat,
+//                                         topRightLng: mapBounds.northEastLng,
+//                                         bottomLeftLat: mapBounds.southWestLat,
+//                                         bottomLeftLng: mapBounds.southWestLng)
+//            .map { .setPin($0) }
+//            .debug("[HomeReactor] fetchPin")
             
         case .readLetter(let id):
             return self.service.fetchReadLetter(id: id)
@@ -79,5 +88,16 @@ class HomeReactor: Reactor {
         }
         
         return state
+    }
+
+    func transform(action: Observable<Action>) -> Observable<Action> {
+        Observable.combineLatest(self.locationManager.rx.updateLocations,
+        )
+        let updateLocation = self.locationManager.rx.updateLocations
+            .map{ $0.coordinate }
+            .debug("[HomeViewController] updateLocations")
+            .map { Action.moveMap(userLat: $0.latitude, userLng: $0.longitude, mapBounds: <#T##NMGLatLngBounds#>) }
+
+        return action
     }
 }

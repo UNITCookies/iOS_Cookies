@@ -28,9 +28,22 @@ final class BottomMenuView: UIView {
         self.containerView.layer.cornerRadius = 20.0
         self.containerView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         UIView.animate(withDuration: 1) {
+            self.homeImageView.transform = CGAffineTransform(translationX: 1.0, y: 1.5)
             self.homeImageView.transform = CGAffineTransform(scaleX: 3, y: 3)
         }
         self.layoutIfNeeded()
+    }
+    
+    func animateButtons(_ selectedHome: Bool) {
+        UIView.animate(withDuration: 1) {
+            if selectedHome {
+                self.homeImageView.transform = CGAffineTransform(translationX: 1.0, y: 1.5)
+                self.homeImageView.transform = CGAffineTransform(scaleX: 3, y: 3)
+            } else {
+                self.homeImageView.transform = CGAffineTransform(translationX: 1.0, y: 1.0)
+                self.homeImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }
+        }
     }
 }
 
@@ -40,9 +53,7 @@ extension Reactive where Base: BottomMenuView {
             .writeButton.rx.tap
             .withUnretained(base)
             .do(onNext: { base, _ in
-                UIView.animate(withDuration: 1) {
-                    base.homeImageView.transform = CGAffineTransform(scaleX: 3, y: 3)
-                }
+                base.animateButtons(true)
             }).map { $0.1 }
         )
     }
@@ -52,9 +63,7 @@ extension Reactive where Base: BottomMenuView {
             .madeListButton.rx.tap
             .withUnretained(base)
             .do(onNext: { base, _ in
-                UIView.animate(withDuration: 1) {
-                    base.homeImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
-                }
+                base.animateButtons(false)
             }).map { $0.1 }
         )
     }
@@ -64,9 +73,7 @@ extension Reactive where Base: BottomMenuView {
             .collectedListButton.rx.tap
             .withUnretained(base)
             .do(onNext: { base, _ in
-                UIView.animate(withDuration: 1) {
-                    base.homeImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
-                }
+                base.animateButtons(false)
             }).map { $0.1 }
         )
     }
